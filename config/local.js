@@ -30,7 +30,7 @@ module.exports = {
         "transports": [
             new winston.transports.File({
                   "level": 'error'
-                , "filename": '../logs/all-logs.log'
+                , "filename": './logs/all-logs.log'
                 , "handleExceptions": true
                 , "json": true
                 , "maxsize": 5242880 //5MB
@@ -43,7 +43,7 @@ module.exports = {
                 }
             })
             , new winston.transports.Console({
-                  "level": 'info'
+                  "level": 'error, warn, info, debug'
                 , "handleExceptions": true
                 , "json": true
                 , "colorize": true

@@ -30,16 +30,13 @@ var fs = require("fs"),
     bodyParser = require('body-parser'),
     compression = require('compression'),
     cookieParser = require('cookie-parser'),
-    db = require('./config/database/mongodb'),
     swagger = require("swagger-node-express"),
     argv = require('minimist')(process.argv.slice(2)),
     expressValidator = require('express-validator'),
     LocalStrategy = require('passport-local').Strategy,
-    config = require('./config/').get(process.env.NODE_ENV);
-    /*OLD Implementation*/
-    //routes = require('./routes'),
-    //user = require('./routes/user'),
-    //pipefile = require('./routes/pipefile'),
+    config = require('./config/').get(process.env.NODE_ENV),
+    db = require('./config/database/mongodb');
+
 
 var User = require('./model/').User;
 //require('./model/userSchema').get(config);
@@ -79,16 +76,43 @@ app.use(expressValidator());
 app.use(require("./controller/index"));
 //require(__dirname +'/routes/routes')(app, passport);
 
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 /**
  * @description Loading the tools, libraries required only in dev & local & not in production
  */
-if (app.get('env') !== 'production' ) {
+if (app.get('env') !== 'production') {
     require('./lib/')(app);
 }
+app.all('*', function(req, res) {
+    throw new Error("Bad request");
+});
+app.use(function(e, request, response, next) {
+    if (e.message === "Bad request") {
+        var error = {
+            status: false,
+            error: {
+                message: e.message,
+                stack: e.stack
+            }
+        }
+        logger.error(error);
+        response.status(404).json({
+            status: false,
+            error: {
+                msg: e.message
+            }
+        });
+    }
+});
 /**
  * Launch server
  */
 app.listen(app.get('port'), function() {
-    debug('Application started on port %d', app.get('port'));
-    console.log('Express server listening on port ' + app.get('port'));
+    //debug('Application started on port %d', app.get('port'));
+    logger.log('info','Express server listening on port ' + app.get('port'));
+    //logger.info("This is info level");
+    //logger.log('log', 'Express server listening on port ' + app.get('port'));
+    // console.log('Express server listening on port ' + app.get('port'));
 });

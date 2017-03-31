@@ -1,12 +1,20 @@
 'use strict';
 
+var config = require('../config/'),
+    Base,
+    User;
+
 module.exports = {
-    User: require('./userSchema'),
-    UserPersonal: require('./userPersonalSchema'),
-    UserProfile: require('./userProfileSchema'),
-    UserHRDetails: require('./userHRDetailsSchema'),
-    UserBank: require('./userBankSchema'),
-    UserTracking: require('./userTrackingSchema'),
-    UserAttendance: require('./attendanceSchema'),
-    ClientCompany: require('./clientSchema'),
+    init: function(){
+        require('./base');
+        require('./userSchema');
+    }
+    , User: require('./userSchema')
+    , UserPersonal: require('./userPersonalSchema')
+    , UserProfile: require('./userProfileSchema')
+    , UserHRDetails: require('./userHRDetailsSchema')
+    , UserBank: require('./userBankSchema')
+    , UserTracking: require('./userTrackingSchema')
+    , UserAttendance: require('./attendanceSchema')
+    , ClientCompany: require('./clientSchema')
 };

@@ -1,5 +1,5 @@
 /**
- * @name Base Schema 
+ * @name Base Schema
  * @path models/base.js
  * @file base.js
  * @description This provides all the different models for the various user & other schema in the API

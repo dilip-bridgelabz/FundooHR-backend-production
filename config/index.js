@@ -13,7 +13,8 @@
     , clc = require('cli-color')
     , loadLocalConfig = require('./local')
     , loadProductionConfig = require('./production')
-    , loadDevelopmentConfig = require('./development');
+    , loadDevelopmentConfig = require('./development')
+    , config;
 
 winston.emitErrs = true;
 
@@ -50,7 +51,7 @@ var consoleColorMap = {
  * @description Combine all the require config files.
  *
  */
-var config = {
+var envConfig = {
       "production": loadProductionConfig
     , "development": loadDevelopmentConfig
     , "local": loadLocalConfig
@@ -81,10 +82,16 @@ var getDomainURL = function(that){
  * @exports : Exports the Config Environment based Configuration
  *
  */
-exports.get = function get(env) {
-    this.config = config[env] || config.local;
-    this.ename = (this.config.name) ? this.config.name : '';
-    this.config.domainURL = getDomainURL(this);
-    console.log("Environment Set to:", this.ename);
-    return this.config;
-};
+module.exports = {
+    set: function get(env) {
+        if(config == null){
+            this.config = envConfig[env] || envConfig.local;
+            this.ename = (this.config.name) ? this.config.name : '';
+            this.config.domainURL = getDomainURL(this);
+            console.log("Environment Set to:", this.ename);
+            config = this.config;
+        }
+        return config;
+    },
+    config
+}

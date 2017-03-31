@@ -15,8 +15,8 @@ var mongoose = require('mongoose'),
     jwt = require('jwt-simple'),
     passportLocalMongoose = require('passport-local-mongoose'),
     Base = require('./base'), // Include the base schema
-    tokenSecret = 'put-a-$Ecr3t-h3re',
-    config;
+    config = require('../config/');
+
 var ObjectId = Schema.Types.ObjectId;
 
 /**
@@ -43,7 +43,7 @@ Token.statics.hasExpired = function (created) {
 };
 
 /**
- * Token Model 
+ * Token Model
  */
 var TokenModel = mongoose.model('Token', Token);
 
@@ -136,7 +136,7 @@ UserSchema.plugin(passportLocalMongoose);
  * @api public
  */
 UserSchema.statics.encode = function (data) {
-    return jwt.encode(data, tokenSecret);
+    return jwt.encode(data, config.tokenSecret);
 };
 
 /**
@@ -146,7 +146,7 @@ UserSchema.statics.encode = function (data) {
  * @api public
  */
 UserSchema.statics.decode = function (data) {
-    return jwt.decode(data, tokenSecret);
+    return jwt.decode(data, config.tokenSecret);
 };
 
 UserSchema.statics.createUserToken = function (username, cb) {
@@ -327,7 +327,7 @@ UserSchema.pre('save', function (next) {
 });
 
 /**
- * Expose `User` Model
+ * @description Expose `User` Model
  */
 module.exports = {
     User: UserModel, //mongoose.model('User', UserSchema);

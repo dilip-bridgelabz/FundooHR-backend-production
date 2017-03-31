@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /**
  * FundooHR-Backend
  *
@@ -34,12 +33,9 @@ var fs = require("fs"),
     argv = require('minimist')(process.argv.slice(2)),
     expressValidator = require('express-validator'),
     LocalStrategy = require('passport-local').Strategy,
-    config = require('./config/').get(process.env.NODE_ENV),
-    db = require('./config/database/mongodb');
-
-
-var User = require('./model/').User;
-//require('./model/userSchema').get(config);
+    config = require('./config/index').set(process.env.NODE_ENV),
+    db = require('./config/database/')(config);
+    model = require('./model/').init(config);
 
 /**
  * @description Winston Logger derived from the config
@@ -68,9 +64,9 @@ app.set('view cache', true); //Which ever template engine you use, always ensure
 app.use(passport.initialize());
 app.use(passport.session());
 // Configure passport-local to use account model for authentication
-passport.use(new LocalStrategy(User.User.authenticate()));
-passport.serializeUser(User.User.serializeUser());
-passport.deserializeUser(User.User.deserializeUser());
+// passport.use(new LocalStrategy(User.User.authenticate()));
+// passport.serializeUser(User.User.serializeUser());
+// passport.deserializeUser(User.User.deserializeUser());
 app.use(expressValidator());
 
 app.use(require("./controller/index"));
@@ -106,13 +102,14 @@ app.use(function(e, request, response, next) {
         });
     }
 });
+
+// process.on('uncaughtException', function (error) {
+//    console.log(error.stack);
+// });
 /**
  * Launch server
  */
 app.listen(app.get('port'), function() {
-    //debug('Application started on port %d', app.get('port'));
     logger.log('info','Express server listening on port ' + app.get('port'));
-    //logger.info("This is info level");
-    //logger.log('log', 'Express server listening on port ' + app.get('port'));
-    // console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });

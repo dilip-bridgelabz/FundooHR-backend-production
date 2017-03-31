@@ -25,7 +25,14 @@ module.exports = {
     , 'ttl': 3600000 //1 hour
     , 'resetTokenExpiresMinutes': 20 //20 minutes later
     , "swagger": true
-    , "database": 'mongodb://127.0.0.1:27017/fundoohr'
+    , "database": {
+        "mongodb" : {
+              "name": "fundoohr"
+            , "dbURI": "mongodb://127.0.0.1:27017/fundoohr"
+            , "username": ""
+            , "password": ""
+        }
+    }
     , "logger": new winston.Logger({
         "transports": [
             new winston.transports.File({
@@ -39,7 +46,7 @@ module.exports = {
                 , "prettyPrint": true
                 , "zippedArchive": true
                 , "timestamp": function() {
-                    return moment.utc().format();
+                    return moment.utc().format('ddd MMM D YYYY h:mm:ss a Z');
                 }
             })
             , new winston.transports.Console({
@@ -50,7 +57,7 @@ module.exports = {
                 , "prettyPrint": true
                 , "humanReadableUnhandledException": true
                 , "timestamp": function() {
-                    return moment.utc().format();
+                    return moment.utc().format('ddd MMM D YYYY h:mm:ss a Z');
                 }
             })
         ]

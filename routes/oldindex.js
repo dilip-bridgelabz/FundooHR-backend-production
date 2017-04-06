@@ -1,18 +1,47 @@
-var express = require('express'),
-    util = require('util'),
-    db = require('../config/database/mongodb'),
-    firebase = require("../config/database/firebase"),
-    commonMethod = require("../common/commonMethod"),
-    config = require('../config/static/'),
-    User = require('../model/userSchema').User,
-    router = express.Router();
+﻿/**
+ *  Main controller file.
+ */
 
-router.post("/", function(request, response, next) {
+"use strict";
+
+var express = require("express"),
+    config = require('../config/'),
+    validator = require('../config/static/'),
+    commonMethod = require("../common/commonMethod"),
+    logger = config.config.logger,
+    router = express.Router({
+        caseSensitive: true
+    }),
+    passport = require("passport"),
+    User = require("../model/userSchema").User;
+
+
+router.post('/ServieLoginAuth', function(request, response, next) {
+    passport.authenticate("local-login", function(err, user, info) {
+        var result = {};
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+        if (!user) {
+            result.status = false;
+            result.message = info.message;
+            return response.status(401).json(result);
+        }
+        var token = commonMethod.generateToken(request.body.emailAddress);
+        result.status = true;
+        // result.message = info.message;
+        return response.send(result);
+    })(request, response, next);
+});
+
+
+router.post("/ServiceSignupAuth", function(request, response, next) {
     try {
         var result, errors;
         request.filter();
-        request.check(config.validationSchema.signup);
-        result = config.defaultResult;
+        request.check(validator.validationSchema.signup);
+        result = validator.defaultResult;
     } catch (e) {
         var result = {};
         result.status = false;
@@ -41,6 +70,7 @@ router.post("/", function(request, response, next) {
             User.register(newUser, request.body.password, function(error, data) {
                 try {
                     if (error) {
+                        console.log(JSON.stringify(error));
                         if (error.name == 'ValidationError') {
                             for (var field in error.errors) {
                                 if (error.errors[field].kind == 'enum') {
@@ -58,12 +88,17 @@ router.post("/", function(request, response, next) {
                         }
                         throw new Error(error);
                     }
-                    token = commonMethod.generateToken(request.body.emailAddress);
+                    var token = commonMethod.generateToken(request.body.emailAddress);
+                    console.log(token);
                     result.status = true;
                     result.message = "User registered successfully";
+                    // passport.authenticate("local-login", {
+                    //     successRedirect: "/dashboard",
+                    //     failureRedirect: "/error",
+                    // })(request, response);
                     response.send(result);
                 } catch (e) {
-                    if (!config.checkSystemErrors(e)) {
+                    if (!validator.checkSystemErrors(e)) {
                         result.message = e;
                     }
                     console.error(e);
@@ -71,7 +106,7 @@ router.post("/", function(request, response, next) {
                 };
             });
         } catch (e) {
-            if (!config.checkSystemErrors(e)) {
+            if (!validator.checkSystemErrors(e)) {
                 result.message = e;
             }
             console.error(e);
@@ -79,5 +114,24 @@ router.post("/", function(request, response, next) {
         };
     });
 });
+
+module.exports = router;
+/********************** Authentication [END] **********************/
+
+/********************** Helper [START] **********************/
+/**
+ * [Checks if a user is logged in]
+ * @method isLoggedIn
+ * @param  {[type]}   req  [Request]
+ * @param  {[type]}   res  [Response]
+ * @param  {Function} next [Callback]
+ * @return {Boolean}  [returns true if the user is logged in]
+ */
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect("/login");
+}
+/********************** Helper [START] **********************/
 
 module.exports = router;

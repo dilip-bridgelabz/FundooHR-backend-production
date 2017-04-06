@@ -10,7 +10,9 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcryptjs'),
+    uuid = require("uuid"),
+    bcrypt = require('bcrypt-nodejs'),
+    // bcrypt = require('bcryptjs'),
     crypto = require('crypto'),
     jwt = require('jwt-simple'),
     passportLocalMongoose = require('passport-local-mongoose'),
@@ -18,34 +20,6 @@ var mongoose = require('mongoose'),
     config = require('../config/');
 
 var ObjectId = Schema.Types.ObjectId;
-
-/**
- * @schema  Token
- * @description User token
- */
-var Token = new Schema({
-    token: {
-        type: String
-    },
-    date_created: {
-        type: Date,
-        default: Date.now
-    },
-});
-
-/**
- * Check the token expired
- */
-Token.statics.hasExpired = function (created) {
-    var now = new Date();
-    var diff = (now.getTime() - created);
-    return diff > config.ttl;
-};
-
-/**
- * Token Model
- */
-var TokenModel = mongoose.model('Token', Token);
 
 /**
  * @description Defining ENUMs for the gender field which will use for validation.
@@ -66,20 +40,26 @@ var engineerTypes = 'FELLOWSHIP,INTERNSHIP,EMPLOYEMENT'.split(',');
  * @schema  UserSchema
  * @description User details
  */
-var UserSchema = new Base.BaseSchema({
+//var UserSchema = new Base.BaseSchema({
+var UserSchema = new Schema({
+    username: { type: String, unique: true },
     engineerID: {
         type: String,
         required: true,
         trim: true,
         unique: ['A user with same Engineer ID {VALUE} already exists']
     },
+    password: String,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
     firstName: {
         type: String,
         trim: true
     },
     lastName: {
         type: String,
-        trim: true
+        trim: true,
+        required: false
     },
     emailAddress: {
         type: String,
@@ -100,20 +80,22 @@ var UserSchema = new Base.BaseSchema({
     gender: {
         type: String,
         required: false,
-        enum: {
-            values: genders,
-            message: 'Invalid Gender. Please selecet a valid Gender.'
-        }
+        // enum: {
+        //     values: genders,
+        //     message: 'Invalid Gender. Please selecet a valid Gender.'
+        // }
     },
     isSuperAdmin: {
         type: Boolean,
         trim: true,
-        default: false
+        default: false,
+        required: false
     },
     phone: {
         type: String,
+        required: false,
         validate: {
-            validator: function (v) {
+            validator: function(v) {
                 var re = /^\d{10}$/;
                 return (v == null || v.trim().length < 1) || re.test(v)
             },
@@ -122,100 +104,63 @@ var UserSchema = new Base.BaseSchema({
     },
     avatarImg: {
         type: ObjectId,
-        ref: 'images'
+        ref: 'images',
+        required: false
     },
     lastIPAddress: String
 });
 
-UserSchema.plugin(passportLocalMongoose);
+// var options = ({ missingPasswordError: "Wrong password" });
+// UserSchema.plugin(passportLocalMongoose, options);
+// UserSchema.plugin(passportLocalMongoose);
 
 /**
- * JWT `Encode` the password
+ * JWT `
+            Encode ` the password
  *
  * @return {String} token
  * @api public
  */
-UserSchema.statics.encode = function (data) {
+UserSchema.statics.encode = function(data) {
     return jwt.encode(data, config.tokenSecret);
 };
 
 /**
- * JWT `Decode` the password
+ * JWT `
+            Decode ` the password
  *
  * @return {String} token
  * @api public
  */
-UserSchema.statics.decode = function (data) {
+UserSchema.statics.decode = function(data) {
     return jwt.decode(data, config.tokenSecret);
 };
 
-UserSchema.statics.createUserToken = function (username, cb) {
-    var self = this;
-    this.findOne({
-        username: username
-    }, function (error, user) {
-        if (error || !user) {
-            console.log('error');
-        }
-        //Create a token and add to user and save
-        var token = self.encode({
-            username: username
-        });
-        user.token = new TokenModel({
-            token: token
-        });
-        user.save(function (err, user) {
-            if (err) {
-                cb(err, null);
-            } else {
-                console.log("about to cb withuserusr.token.token: " + user.token.token);
-                cb(false, user.token.token); //token object, in turn, has a token property :)
-            }
-        });
-    });
+/**
+ *Create schema methods
+ */
+UserSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-UserSchema.plugin(require('mongoose-beautiful-unique-validation'));
-var UserModel = Base.BaseModel.discriminator('User', UserSchema);
+UserSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+// UserSchema.methods.validPassword = function(password) {
+//     return bcrypt.compareSync(password, this.password);
+// };
 
 /**
- * Get `fullName` from `firstName` and `lastName`
- *
- * @return {String} fullName
- * @api public
- */
-UserSchema.virtual('fullName').get(function () {
-    return this.firstName + ' ' + this.lastName;
-});
-
-/**
- * Set `fullName` from `String` param splitting
- * and calling firstName as first value and lastName
- * as the concatenation of the rest values
- *
- * @param {String} name
- * @return {User}
- * @api public
- */
-UserSchema.virtual('fullName').set(function (name) {
-    var split = name.split(' ');
-    if (split.length) {
-        this.firstName = split.shift();
-        this.lastName = split.join(' ');
-    }
-
-    return this;
-});
-
-/**
- * Find `User` by its email
+ * Find `
+            User ` by its email
  *
  * @param {String} email
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.findByEmail = function (email, cb) {
+UserSchema.methods.findByEmail = function(email, cb) {
     return this.findOne({
             emailAddress: email
         })
@@ -224,27 +169,29 @@ UserSchema.methods.findByEmail = function (email, cb) {
 
 
 /**
- * Find `User` by its id
+ * Find `
+            User ` by its id
  *
  * @param {String} id
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserById = function (id, callback) {
+UserSchema.methods.getUserById = function(id, callback) {
     User.findById(id, callback);
 };
 
 
 /**
- * Find `User` by its username
+ * Find `
+            User ` by its username
  *
  * @param {String} username
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserByUsername = function (username, callback) {
+UserSchema.methods.getUserByUsername = function(username, callback) {
     var query = {
         username: username
     };
@@ -252,7 +199,8 @@ UserSchema.methods.getUserByUsername = function (username, callback) {
 };
 
 /**
- * Find `User` by its username and Password
+ * Find `
+            User ` by its username and Password
  *
  * @param {String} username
  * @param {String} password
@@ -260,39 +208,25 @@ UserSchema.methods.getUserByUsername = function (username, callback) {
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserByUsernameAndPassword = function (query, callback) {
+UserSchema.methods.getUserByUsernameAndPassword = function(query, callback) {
     this.findOne(query, callback);
 };
 
 
 /**
- * Compare User Password `User` by passing candidatePassword
- *
- * @param {String} candidatePassword
- * @return {Error} err
- * @return Void
- * @api public
- */
-UserSchema.methods.comparePassword = function (candidatePassword, hash, callback) {
-    // Load hash from your password DB.
-    bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
-        callback(null, isMatch);
-    });
-};
-
-/**
- * createUser `User` by newUser Object
+ * createUser `
+            User ` by newUser Object
  *
  * @param {Object} newUser
  * @return {Error} err
  * @return Void
  * @api public
  */
-UserSchema.methods.createUser = function (newUser, callback) {
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(newUser.password, salt, function (err, hash) {
+UserSchema.methods.createUser = function(newUser, callback) {
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(newUser.password, salt, function(err, hash) {
             newUser.password = hash;
-            newUser.save(function (error, data, affected) {
+            newUser.save(function(error, data, affected) {
                 //console.error(error);
                 if (error && error.code !== 11000) {
                     if (error.name == 'ValidationError') {
@@ -317,19 +251,104 @@ UserSchema.methods.createUser = function (newUser, callback) {
     });
 };
 
-UserSchema.pre('save', function (next) {
-    var now = new Date().getTime();
-    this.updatedAt = now;
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
+UserSchema.pre('save', function(next) {
+    // var user = this;
+    // if (!user.isModified('password')) { return next(); }
+    // bcrypt.genSalt(10, (err, salt) => {
+    //     if (err) { return next(err); }
+    //     bcrypt.hash(user.password, salt, null, (err, hash) => {
+    //         if (err) { return next(err); }
+    //         user.password = hash;
+    //         next();
+    //     });
+    // });
+    // var now = new Date().getTime();
+    // //this._id = uuid.v1();
+    // this.updatedAt = now;
+    // if (!this.createdAt) {
+    //     this.createdAt = now;
+    // }
     next();
 });
 
+//var UserModel = Base.BaseModel.discriminator('User', UserSchema);
+var UserModel = mongoose.model('User', UserSchema);
+
 /**
- * @description Expose `User` Model
+ *User Model Utility functions
+ */
+function findUser(req, res, next) {
+    return UserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username',
+        function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (user == null) {
+                return res.status(404).json('User does not exists');
+            }
+            return res.status(200).json(user);
+        }
+    );
+}
+
+function viewAllUsers(req, res, next) {
+    return UserModel.find({},
+        function(err, users) {
+            if (err) {
+                return next(err);
+            }
+            if (users == null) {
+                return res.status(404).json('No users');
+            }
+            return res.json(users);
+        }
+    );
+}
+
+function updateUser(req, res, next) {
+    return UserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
+        function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (user == null) {
+                return res.status(404).json('User not found in the dBase');
+            }
+            user.email = req.body.emailAddress || user.emailAddress;
+            user.username = req.body.username || user.username;
+            user.password = user.generateHash(req.body.password) || user.password;
+            user.save(function(err, user) {
+                if (err) {
+                    return next(err);
+                }
+                return res.json(user);
+            });
+        }
+    );
+}
+
+function deleteUser(req, res, next) {
+    return UserModel.findOneAndRemove({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
+        function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (user == null) {
+                return res.status(404).json('User not found');
+            }
+            return res.json(user);
+        }
+    );
+}
+/**
+ * @description Expose `
+            User ` Model
  */
 module.exports = {
     User: UserModel, //mongoose.model('User', UserSchema);
-    UserSchema: UserSchema
+    UserSchema: UserSchema,
+    findUser: findUser,
+    viewAllUsers: viewAllUsers,
+    updateUser: updateUser,
+    deleteUser: deleteUser
 };

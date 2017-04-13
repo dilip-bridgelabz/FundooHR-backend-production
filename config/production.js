@@ -18,7 +18,6 @@ module.exports = {
       "name": 'Production'
     , "host": ''
     , "port": 8080
-
     , "session": {
           "key": 'the.express.session.id'
         , "secret": 'something.super.secret'

@@ -43,7 +43,7 @@ Token.statics.hasExpired = function (created) {
 };
 
 /**
- * Token Model 
+ * Token Model
  */
 var TokenModel = mongoose.model('Token', Token);
 

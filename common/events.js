@@ -42,7 +42,6 @@ custEvent.prototype.employeeSnapshot = function(tempObj, engineerId) {
         } else {
             tempObj.employeeData = JSON.parse(employeeData[engineerId]);
             tempObj.employeeData.imageUrl = imageUrl;
-            `  `
             myCustEvent.emit("employeeSnapshot", tempObj);
         }
     });

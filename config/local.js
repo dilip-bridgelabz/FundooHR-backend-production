@@ -1,7 +1,7 @@
 /**
- * production.js
+ * local.js
  *
- * Procuction file is the final config for the live site. Do not change the content.
+ * Local file is the setup required for running the app locally
  *
  * @author  Dilip <dilip.more@bridgelabz.com>
  * @license ICS
@@ -11,28 +11,26 @@
     , moment = require('moment');
 
 /**
- * @exports : Exports Production (Live) Config Environment based Configuration
+ * @exports : Exports local Config Environment based Configuration
  *
  */
 module.exports = {
-      "name": 'Production'
-    , "host": ''
-    , "port": 8080
-
+      "name": 'local'
+    , "host": 'localhost'
+    , "port": process.env.NODE_PORT || 1337
     , "session": {
           "key": 'the.express.session.id'
         , "secret": 'something.super.secret'
     }
     , 'ttl': 3600000 //1 hour
     , 'resetTokenExpiresMinutes': 20 //20 minutes later
-    , "swagger": false
-    , "database": 'mongodb://localhost:27017/fundoohr'
-
+    , "swagger": true
+    , "database": 'mongodb://127.0.0.1:27017/fundoohr'
     , "logger": new winston.Logger({
         "transports": [
             new winston.transports.File({
-                  "level": 'error,warn'
-                , "filename": './logs/all-logs.log'
+                  "level": 'error'
+                , "filename": '../logs/all-logs.log'
                 , "handleExceptions": true
                 , "json": true
                 , "maxsize": 5242880 //5MB
@@ -41,7 +39,7 @@ module.exports = {
                 , "prettyPrint": true
                 , "zippedArchive": true
                 , "timestamp": function() {
-                  return moment.utc().format();
+                    return moment.utc().format();
                 }
             })
             , new winston.transports.Console({
@@ -49,8 +47,19 @@ module.exports = {
                 , "handleExceptions": true
                 , "json": true
                 , "colorize": true
+                , "prettyPrint": true
+                , "humanReadableUnhandledException": true
+                , "timestamp": function() {
+                    return moment.utc().format();
+                }
             })
         ]
         , "exitOnError": false
+        , "emitErrs": true
     })
+    , "stream": {
+        write: function(message, encoding) {
+            this.logger.info(message);
+        }
+    }
 };

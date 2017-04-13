@@ -1,14 +1,14 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var firebase = require("../config/database/firebase.js");
-//var redisClient = require('redis').createClient();
-var redisClient = {};
+var redisClient = require('redis').createClient();
+
 // Network interfaces
 var os = require('os').networkInterfaces();
 
 // Iterate over interfaces ...
 var ip = Object.keys(os).reduce(function(result, dev) {
-console.log(result,dev);
+
     return result.replace("lo", "").concat(os[dev].reduce(function(result, details) {
         return result.concat(details.family === 'IPv4' && !details.internal ? [details.address] : []);
     }, []));

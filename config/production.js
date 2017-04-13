@@ -17,7 +17,7 @@
 module.exports = {
       "name": 'Production'
     , "host": ''
-    , "port": 80
+    , "port": 8080
     , "session": {
           "key": 'the.express.session.id'
         , "secret": 'something.super.secret'
@@ -25,7 +25,7 @@ module.exports = {
     , 'ttl': 3600000 //1 hour
     , 'resetTokenExpiresMinutes': 20 //20 minutes later
     , "swagger": false
-    , "database": 'mongodb://root:BME7fgPljTfE@localhost:27017/fundoohr'
+    , "database": 'mongodb://localhost:27017/fundoohr'
     , "logger": new winston.Logger({
         "transports": [
             new winston.transports.File({

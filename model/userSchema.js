@@ -42,7 +42,7 @@ var engineerTypes = 'FELLOWSHIP,INTERNSHIP,EMPLOYEMENT'.split(',');
  */
 //var UserSchema = new Base.BaseSchema({
 var UserSchema = new Schema({
-    username: { type: String, unique: true },
+    employee: { type: String, unique: true },
     engineerID: {
         type: String,
         required: true,

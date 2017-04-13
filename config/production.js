@@ -20,7 +20,7 @@ module.exports = function(config) {
     return {
         "name": 'Production',
         "host": '',
-        "port": 80,
+        "port": 8080,
         "session": {
             "key": 'the.express.session.id',
             "secret": 'something.super.secret'

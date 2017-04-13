@@ -120,7 +120,7 @@ var envConfig = {
 }
 
 /**
- * 
+ *
  */
 var luscaSecurity = function() {
     config.security.config = luscaOps;

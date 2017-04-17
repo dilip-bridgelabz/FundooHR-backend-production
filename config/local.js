@@ -21,6 +21,14 @@ module.exports = function(config) {
         "name": 'local',
         "host": 'localhost',
         "port": process.env.NODE_PORT || 1337,
+        "companyDetails": function() {
+            try {
+                return require('./static/companys');
+            } catch (e) {
+                console.log("Configuration for Company Details not set. " + dirname(__FILE__));
+                process.exit(0);
+            }
+        },
         "session": {
             "key": 'the.express.session.id',
             "secret": 'something.super.secret'
@@ -41,9 +49,10 @@ module.exports = function(config) {
         'resetTokenExpiresMinutes': 20, //20 minutes later
         "swagger": true,
         "database": {
+            "debug": true,
             "mongodb": {
                 "name": "fundoohr",
-                "dbURI": "mongodb://127.0.0.1:27017/fundoohr",
+                "dbURI": "mongodb://127.0.0.1:27017/fundoohrtest1",
                 "username": "",
                 "password": ""
             }

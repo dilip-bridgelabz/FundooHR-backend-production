@@ -32,11 +32,13 @@ var fs = require("fs"),
     expressValidator = require('express-validator'),
     config = require('./config/').set(process.env.NODE_ENV),
     db = require('./config/database/')(config),
-    model = require('./model/').init(config),
+    modelInit = require('./model/').init(config),
+    model = require('./model/'),
     helmet = require("helmet"),
     router = require('./routes/'),
     session = require("express-session"),
     lusca = require("lusca");
+
 
 /**
  * @description Winston Logger derived from the config
@@ -72,10 +74,12 @@ app.use(expressValidator());
 // }));
 
 var userRoutes = require('./routes/');
+
 /**
- *Routes
+ * @description Routes
  */
-app.use('/', userRoutes);
+app.use('/api', userRoutes);
+
 
 /**
  * Launch server

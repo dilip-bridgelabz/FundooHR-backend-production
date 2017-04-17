@@ -10,10 +10,11 @@ var
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     bcrypt = require('bcrypt-nodejs'),
-    User = require("../model/userSchema").User,
+    Model = require("../model/"),
     config = require('../config/').config,
     logger = config.logger;
 
+var User = Model.Employee.User.User;
 /**
  *Module variables
  */
@@ -66,6 +67,7 @@ passport.use('local-signup', new LocalStrategy({
                         newUser.phone = request.body.phone || '';
                         newUser.engineerID = request.body.engineerID || '';
                         newUser.engineerType = ((request.body.engineerType) ? request.body.engineerType.toUpperCase() : '') || '';
+                        console.log(newUser);
                         newUser.save(function(error) {
                             if (error) {
                                 var message;

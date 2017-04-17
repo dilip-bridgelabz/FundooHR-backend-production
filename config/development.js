@@ -36,6 +36,7 @@ module.exports = function(config) {
         },
         "swagger": true,
         "database": {
+            "debug": true,
             "mongodb": {
                 "name": "fundoohr",
                 "dbURI": "mongodb://127.0.0.1:27017/fundoohr",

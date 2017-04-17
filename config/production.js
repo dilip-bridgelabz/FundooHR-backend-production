@@ -85,8 +85,4 @@ module.exports = function(config) {
             "colors": config.colors
         })
     };
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> edc71d6e3ee463d8a3cd352ebb26bfa3b9632776

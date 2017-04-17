@@ -73,6 +73,26 @@ app.use(expressValidator());
 //     })
 // }));
 
+require("./lib")(app);
+//(app);
+// app.use(swagger);
+// app.use(express.static('dist'));
+// swagger.setAppHandler(subpath);
+// swagger.setApiInfo({
+//     title: "Fundoo HR API",
+//     description: "",
+//     termsOfServiceUrl: "",
+//     contact: "admin@bridgelabz.com",
+//     license: "",
+//     licenseUrl: ""
+// });
+// subpath.get('/', function (req, res) {
+//     res.sendfile(__dirname + '/lib/index.html');
+// });
+//
+// swagger.configureSwaggerPaths('', 'api-docs', '');
+//
+// swagger.configure(applicationUrl, '1.0.0');
 var userRoutes = require('./routes/');
 
 /**

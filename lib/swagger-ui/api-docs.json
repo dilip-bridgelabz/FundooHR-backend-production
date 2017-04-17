@@ -12,7 +12,7 @@
     },
     "basePath": "/",
     "tags": [{
-            "name": "Login",
+            "name": "Login & Signup",
             "description": "Login API for already registered users through the backend."
         },
         {
@@ -20,16 +20,16 @@
             "description": "API for dashborad"
         },
         {
-            "name": "Engineer",
-            "description": "API for Engineer data "
+            "name": "Employee",
+            "description": "API for employee data "
         },
         {
             "name": "Attendance",
-            "description": "API for Engineer Attendance"
+            "description": "API for employee Attendance"
         },
         {
             "name": "Report",
-            "description": "API for Engineer to download the report"
+            "description": "API for employee to download the report"
         },
         {
             "name": "Client",
@@ -37,7 +37,7 @@
         },
         {
 	     "name" : "Search",
-	     "description" : "API for searching the engineer."
+	     "description" : "API for searching the employee."
         }
     ],
     "schemes": [
@@ -58,7 +58,7 @@
         "/login": {
             "post": {
                 "tags": [
-                    "Login"
+                    "Login & Signup"
                 ],
                 "description": "It authenticates the user email from company database and it returns success response with email and token. For every REST call you need to pass token and crossponding email with some extra request body which is based on REST call's.",
                 "operationId": "login",
@@ -66,8 +66,53 @@
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "emailID",
-                        "emailID": "Logging EmailID",
+                        "name": "username",
+                        "username": "Logging username/email address",
+                        "in": "formData",
+                        "description": "Provide a valid email address to authenticate. e.g. your@some-domain.com",
+                        "required": true,
+                        "type": "string",
+                        "default": "admin@bridgelabz.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "Provide a valid Password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password",
+                        "default": "Bridge@123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully authentcation the user",
+                        "schema": {
+                            "$ref": "#/definitions/loginResponseSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Failed to authentcation user",
+                        "schema": {
+                            "$ref": "#/definitions/loginResponseFailure"
+                        }
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "tags": [
+                    "Login & Signup"
+                ],
+                "description": "Signup the employee from company database and it returns success response.",
+                "operationId": "signup",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "username",
+                        "username": "Signup username/email address",
                         "in": "formData",
                         "description": "Provide a valid email address to authenticate. e.g. your@some-domain.com",
                         "required": true,
@@ -119,7 +164,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -171,7 +216,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -222,7 +267,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -274,7 +319,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -309,9 +354,9 @@
                 ],
                 "parameters": [
                     {
-                        "name": "engineerID",
+                        "name": "employeeID",
                         "in": "query",
-                        "description": "Engineer ID is unique for each engineer",
+                        "description": "Employee ID is unique for each employee",
                         "required": true,
                         "type": "string"
                     },
@@ -324,7 +369,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -351,7 +396,7 @@
             "post": {
                 "tags": [
                     "Attendance",
-                    "Engineer"
+                    "Employee"
                 ],
                 "description": "Create the employee attendance record",
                 "operationId": "recordEmployeeDayAttendance",
@@ -369,7 +414,7 @@
                         }
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -395,9 +440,9 @@
         "/readEmployeeDetails": {
             "get": {
                 "tags": [
-                    "Engineer"
+                    "Employee"
                 ],
-                "description": "Use 'hr', personal', 'profile', 'tack', 'bank' to get the Engineer HR, Personal, Profile (Educational), Tracking & Bank Account details respectively. Merged API's (readEmployeeHRData, readEmployeePersonalData, readEmployeeProfileData, readEmployeeTrackingData, readEmployeeBankData)",
+                "description": "Use 'hr', personal', 'profile', 'tack', 'bank' to get the employee HR, Personal, Profile (Educational), Tracking & Bank Account details respectively. Merged API's (readEmployeeHRData, readEmployeePersonalData, readEmployeeProfileData, readEmployeeTrackingData, readEmployeeBankData)",
                 "operationId": "getEmployeeDetails",
                 "produces": [
                     "application/json"
@@ -413,16 +458,16 @@
                         "enum": ["hr", "personal", "profile", "track", "bank"]
                     },
                     {
-                        "name": "engineerID",
-                        "engineerID": "Engineer ID",
+                        "name": "EmployeeID",
+                        "employeeID": "employee ID",
                         "in": "query",
-                        "description": "Engineer ID needs to be valid",
+                        "description": "employee ID needs to be valid",
                         "required": true,
                         "type": "string",
                         "default": "40002EI"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -448,16 +493,16 @@
         "/updateEmployeeDetails": {
             "put": {
                 "tags": [
-                    "Engineer"
+                    "Employee"
                 ],
-                "description": "Use 'hr', personal', 'profile', 'tack', 'bank' to update the Engineer HR, Personal, Profile (Educational), Tracking & Bank Account details respectively. Merged API's (updateEmployeeHRData, updateEmployeePersonalData, updateEmployeeProfileData, updateEmployeeTrackingData, updateEmployeeBankData)",
+                "description": "Use 'hr', personal', 'profile', 'tack', 'bank' to update the employee HR, Personal, Profile (Educational), Tracking & Bank Account details respectively. Merged API's (updateEmployeeHRData, updateEmployeePersonalData, updateEmployeeProfileData, updateEmployeeTrackingData, updateEmployeeBankData)",
                 "operationId": "updateEmployeeDetails",
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
                 "parameters": [
                     {
-                        "name": "engineerData",
+                        "name": "employeeData",
                         "in": "body",
                         "description": "JSON format of the HR Data of an employee",
                         "required": true,
@@ -466,7 +511,7 @@
                         }
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -500,7 +545,7 @@
                     "application/x-www-form-urlencoded"
                 ],
                 "parameters": [{
-                    "name": "x-token",
+                    "name": "x-access-token",
                     "in": "header",
                     "description": "Token needs to validate & authenticate",
                     "required": true,
@@ -533,7 +578,7 @@
                     "application/x-www-form-urlencoded"
                 ],
                 "parameters": [{
-                    "name": "x-token",
+                    "name": "x-access-token",
                     "in": "header",
                     "description": "Token needs to validate & authenticate",
                     "required": true,
@@ -587,7 +632,7 @@
                         }
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -596,13 +641,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success in generating salary/attendance/invoice report of Engineer",
+                        "description": "Success in generating salary/attendance/invoice report of employee",
                         "schema": {
                             "$ref": "#/definitions/generateReportSuccess"
                         }
                     },
                     "401": {
-                        "description": "Failed to generate salary/attendance/invoice report of Engineer",
+                        "description": "Failed to generate salary/attendance/invoice report of employee",
                         "schema": {
                             "$ref": "#/definitions/generateReportFailure"
                         }
@@ -622,7 +667,7 @@
                 ],
                 "parameters": [
                 {
-                    "name": "x-token",
+                    "name": "x-access-token",
                     "in": "header",
                     "description": "Token needs to validate & authenticate",
                     "required": true,
@@ -656,7 +701,7 @@
                 ],
                 "parameters": [
                 {
-                    "name": "x-token",
+                    "name": "x-access-token",
                     "in": "header",
                     "description": "Token needs to validate & authenticate",
                     "required": true,
@@ -691,7 +736,7 @@
                 "tags": [
                     "Search"
                 ],
-                "description": "Search the engineer by search key (`searchKey`) & cursor. Search key matches the set (engineer name/email) OR (city) OR (company)",
+                "description": "Search the employee by search key (`searchKey`) & cursor. Search key matches the set (employee name/email) OR (city) OR (company)",
                 "operationId": "searchEmployeeByKey",
                 "produces": [
                     "application/json"
@@ -700,7 +745,7 @@
                   {
                       "name": "searchKey",
                       "in": "path",
-                      "description": "Search key will match to matches the Alphabets 'A', 'B', 'C' or engineer name, city & company",
+                      "description": "Search key will match to matches the Alphabets 'A', 'B', 'C' or employee name, city & company",
                       "required": true,
                       "type": "string"
                   },
@@ -713,7 +758,7 @@
                       "type": "string"
                   },
                   {
-                      "name": "x-token",
+                      "name": "x-access-token",
                       "in": "header",
                       "description": "Token needs to validate & authenticate",
                       "required": true,
@@ -756,7 +801,7 @@
                         "default": "1223"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -808,7 +853,7 @@
                         "default": "1223"
                     },
                     {
-                        "name": "x-token",
+                        "name": "x-access-token",
                         "in": "header",
                         "description": "Token needs to validate & authenticate",
                         "required": true,
@@ -941,7 +986,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerId": "40002EI"
+                            "employeeId": "40002EI"
                         },
                         {
                             "employeeName": "Bhushan",
@@ -954,7 +999,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerId": "40003EI"
+                            "employeeId": "40003EI"
                         }]
                     }
                 },
@@ -992,7 +1037,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerId": "40002EI"
+                            "employeeId": "40002EI"
                         },
                         {
                             "employeeName": "Bhushan",
@@ -1005,7 +1050,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerId": "40003EI"
+                            "employeeId": "40003EI"
                         }]
                     }
                 },
@@ -1055,7 +1100,7 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "engineerID": "40002EI",
+                                "employeeID": "40002EI",
                                 "status": "Fellowship",
                                 "name": "Shwetali",
                                 "company": "BridgeLabz",
@@ -1068,7 +1113,7 @@
                                 "imageUrl": "http://192.168.1.102:3000/image2.jpg"
                             },
                             {
-                                "engineerID": "40003EI",
+                                "employeeID": "40003EI",
                                 "status": "Fellowship",
                                 "name": "Bhushan",
                                 "company": "BridgeLabz",
@@ -1100,7 +1145,7 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "engineerID": "40002EI",
+                                "employeeID": "40002EI",
                                 "status": "Fellowship",
                                 "name": "Shwetali",
                                 "company": "BridgeLabz",
@@ -1113,7 +1158,7 @@
                                 "imageUrl": "http://192.168.1.102:3000/image2.jpg"
                             },
                             {
-                                "engineerID": "40003EI",
+                                "employeeID": "40003EI",
                                 "status": "Fellowship",
                                 "name": "Bhushan",
                                 "company": "BridgeLabz",
@@ -1145,7 +1190,7 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "engineerID": "40002EI",
+                                "employeeID": "40002EI",
                                 "status": "Fellowship",
                                 "name": "Shwetali",
                                 "company": "BridgeLabz",
@@ -1158,7 +1203,7 @@
                                 "imageUrl": "http://192.168.1.102:3000/image2.jpg"
                             },
                             {
-                                "engineerID": "40003EI",
+                                "employeeID": "40003EI",
                                 "status": "Fellowship",
                                 "name": "Bhushan",
                                 "company": "BridgeLabz",
@@ -1337,7 +1382,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1350,7 +1395,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1363,7 +1408,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1376,7 +1421,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1389,7 +1434,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1402,7 +1447,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1415,7 +1460,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1428,7 +1473,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
@@ -1441,7 +1486,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Bhushan",
@@ -1454,7 +1499,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40003EI"
+                            "employeeID": "40003EI"
                         }]
                     }
                 }
@@ -1495,31 +1540,31 @@
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         }]
                     }
                 },
@@ -1532,21 +1577,21 @@
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "city": "Mumbai"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "city": "Mumbai"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "city": "Mumbai"
                         }]
                     }
@@ -1560,21 +1605,21 @@
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "company": "Meru"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "company": "Meru"
                         },
                         {
                             "name": "Amit Sharma",
                             "company": "BridgeLabz",
                             "emailAddress": "xyz@gmail.com",
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "company": "Meru"
                         }]
                     }
@@ -1622,7 +1667,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 7,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40001EI"
+                            "employeeID": "40001EI"
                         },
                         {
                             "name": "Bhushan",
@@ -1635,7 +1680,7 @@
                             "companyLeaveDate": "1477308028",
                             "leaveTaken": 0,
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "engineerID": "40003EI"
+                            "employeeID": "40003EI"
                         }]
                     }
                 }
@@ -1662,28 +1707,23 @@
                     "required": true,
                     "example": "01/04/2017"
                 },
-                "engineerID": {
+                "employeeID": {
                     "type": "string",
                     "required": true,
                     "example": "40001EI"
                 },
-                "status": {
-                    "type": "string",
-                    "required": true,
-                    "example": "Present"
-                },
-                "marked": {
-                    "type": "boolean",
+                "isPresent": {
+                    "type": "Boolean",
                     "required": true,
                     "example": true
                 },
                 "inTime": {
-                    "type": "string",
+                    "type": "Date",
                     "required": true,
                     "example": "8:30 AM"
                 },
                 "outTime": {
-                    "type": "string",
+                    "type": "Date",
                     "required": true,
                     "example": "7:30 PM"
                 },
@@ -1706,7 +1746,7 @@
                     "type": "String",
                     "example": "Successfully created employee day attendance record"
                 },
-                "engineerID": {
+                "employeeID": {
                     "required": true,
                     "type": "string",
                     "example": "40001EI"
@@ -1747,23 +1787,19 @@
                 "attendanceData": {
                     "required": true,
                     "type": "object",
-                    "example": {
-                        "1": {
-                            "status": "Leave",
-                            "marked": "true",
-                            "intime": "-",
-                            "outtime": "-",
-                            "reason": "I don't care"
-                        },
-                        "29": {
-                            "status": "Leave",
-                            "marked": "true",
+                    "example": [{
+                            "attendanceDate":"2017/04/1",
+                            "isPresent": true,
+                            "intime": "8:30 AM",
+                            "outtime": "2:30 PM",
+                            "reason": "Leave early."
+                        },{
+                          "attendanceDate":"2017/04/2",
+                          "isPresent": true,
                             "intime": "-",
                             "outtime": "-",
                             "reason": "My Wish"
-                        }
-                    }
-                },
+                        }],
                 "employeeData": {
                     "required": true,
                     "type": "object",
@@ -1781,6 +1817,7 @@
                     }
                 }
             }
+          }
         },
         "employeeMonthAttendanceFailure": {
             "properties": {
@@ -1800,7 +1837,7 @@
             "properties": {
                 "status": {
                     "required": true,
-                    "type": "Interger",
+                    "type": "Boolean",
                     "example": true
                 },
                 "message": {
@@ -1945,13 +1982,13 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                                "engineerID": 30001,
+                                "employeeID": 30001,
                                 "name": "Mrunal desai",
                                 "status": "Internship",
                                 "company": "BridgeLabz"
                             },
                             {
-                                "engineerID": 30002,
+                                "employeeID": 30002,
                                 "name": "Arati Patel",
                                 "status": "Fellowship",
                                 "company": "BridgeLabz"
@@ -1977,7 +2014,7 @@
         },
         "updateEmployeeDetailsSchema": {
             "properties": {
-                "engineerID": {
+                "employeeID": {
                     "type": "string",
                     "required": true,
                     "example": "40001EI"
@@ -2284,7 +2321,7 @@
         },
         "downloadEmployeeReportSchema": {
             "properties": {
-                "selectedEngineer": {
+                "selectedemployee": {
                     "required": true,
                     "schema": {
                         "type": "array",
@@ -2297,11 +2334,11 @@
                         "type": "array",
                         "example": [{
                                 "name": "Next Education",
-                                "engineerList": ["40001EI", "40002EI", "40003EI"]
+                                "employeeList": ["40001EI", "40002EI", "40003EI"]
                             },
                             {
                                 "name": "Craft Villa",
-                                "engineerList": ["40011EI", "40022EI", "400033EI"]
+                                "employeeList": ["40011EI", "40022EI", "400033EI"]
                             }
                         ]
                     }
@@ -2312,11 +2349,11 @@
                         "type": "array",
                         "example": [{
                                 "name": "Next Education",
-                                "engineerList": ["40001EI", "40002EI", "40003EI"]
+                                "employeeList": ["40001EI", "40002EI", "40003EI"]
                             },
                             {
                                 "name": "Craft Villa",
-                                "engineerList": ["40011EI", "40022EI", "400033EI"]
+                                "employeeList": ["40011EI", "40022EI", "400033EI"]
                             }
                         ]
                     }
@@ -2470,7 +2507,7 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                            "engineerID": "40001EI",
+                            "employeeID": "40001EI",
                             "name": "Amit Sharma",
                             "status": "Fellowship",
                             "company": "BridgeLabz",
@@ -2483,7 +2520,7 @@
                             "imageUrl": "http://192.168.1.102:3000/image2.jpg"
                         },
                         {
-                            "engineerID": "40003EI",
+                            "employeeID": "40003EI",
                             "name": "Bhushan",
                             "status": "Fellowship",
                             "company": "BridgeLabz",

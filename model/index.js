@@ -5,16 +5,12 @@ var config = require('../config/'),
     User;
 
 module.exports = {
-    init: function(){
-        require('./base');
-        require('./userSchema');
-    }
-    , User: require('./userSchema')
-    , UserPersonal: require('./userPersonalSchema')
-    , UserProfile: require('./userProfileSchema')
-    , UserHRDetails: require('./userHRDetailsSchema')
-    , UserBank: require('./userBankSchema')
-    , UserTracking: require('./userTrackingSchema')
-    , UserAttendance: require('./attendanceSchema')
-    , ClientCompany: require('./clientSchema')
+    init: function() {
+        require('./base/');
+        require('./employee/');
+    },
+    Employee: require('./employee/'),
+    Company: require('./base/'),
+    Master: require('./masterSchema'),
+    ClientCompany: require('./clientSchema')
 };

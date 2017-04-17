@@ -1,7 +1,7 @@
 /*
- * Client Schema
- * @path models/clientSchema.js
- * @file clientSchema.js
+ * Company Schema
+ * @path model/base/CompanySchema.js
+ * @file CompanySchema.js
  */
 'use strict';
 
@@ -9,40 +9,34 @@
  * Module dependencies
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    Base = require('./base'); // Include the base schema
+    Schema = mongoose.Schema;
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 /**
- * @schema  ClientSchema
- * @description Client details 
+ * @schema CompanySchema
+ * @description Company details 
  */
-var ClientSchema = new Schema({
+var CompanySchema = new Schema({
     name: {
         type: String,
         trim: true,
         unique: true,
         required: true
     },
-    registrationNumber: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    address: {
+    contactName: {
         type: String,
         trim: true
     },
-    contactPerson: {
-        type: String,
-        trim: true
-    },
-    contactPhone: {
+    contactNumber: {
         type: String,
         trim: true
     },
     contactEmailAddress: {
+        type: String,
+        trim: true
+    },
+    address: {
         type: String,
         trim: true
     },
@@ -53,6 +47,6 @@ var ClientSchema = new Schema({
 });
 
 /**
- * Expose `Client` Model
+ * Expose `Company` Model
  */
-module.exports = mongoose.model('Client', ClientSchema);
+module.exports = mongoose.model('Company', CompanySchema);

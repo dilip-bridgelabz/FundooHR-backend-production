@@ -1,0 +1,1705 @@
+//Resource: https://en.wikipedia.org/wiki/List_of_most_populous_cities_in_India
+var cities = [{
+    "city": "Mumbai",
+    "state": "Maharashtra"
+}, {
+    "city": "Delhi",
+    "state": "Delhi"
+}, {
+    "city": "Bangalore",
+    "state": "Karnataka"
+}, {
+    "city": "Hyderabad",
+    "state": "Telangana"
+}, {
+    "city": "Ahmedabad",
+    "state": "Gujarat"
+}, {
+    "city": "Chennai",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Kolkata",
+    "state": "West Bengal"
+}, {
+    "city": "Surat",
+    "state": "Gujarat"
+}, {
+    "city": "Pune",
+    "state": "Maharashtra"
+}, {
+    "city": "Jaipur",
+    "state": "Rajasthan"
+}, {
+    "city": "Lucknow",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Kanpur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Nagpur",
+    "state": "Maharashtra"
+}, {
+    "city": "Indore",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Thane",
+    "state": "Maharashtra"
+}, {
+    "city": "Bhopal",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Pimpri-Chinchwad",
+    "state": "Maharashtra"
+}, {
+    "city": "Patna",
+    "state": "Bihar"
+}, {
+    "city": "Vadodara",
+    "state": "Gujarat"
+}, {
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Ludhiana",
+    "state": "Punjab"
+}, {
+    "city": "Agra",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Nashik",
+    "state": "Maharashtra"
+}, {
+    "city": "Faridabad",
+    "state": "Haryana"
+}, {
+    "city": "Meerut",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Rajkot",
+    "state": "Gujarat"
+}, {
+    "city": "Kalyan-Dombivali",
+    "state": "Maharashtra"
+}, {
+    "city": "Vasai-Virar",
+    "state": "Maharashtra"
+}, {
+    "city": "Varanasi",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Srinagar",
+    "state": "Jammu and Kashmir"
+}, {
+    "city": "Aurangabad",
+    "state": "Maharashtra"
+}, {
+    "city": "Dhanbad",
+    "state": "Jharkhand"
+}, {
+    "city": "Amritsar",
+    "state": "Punjab"
+}, {
+    "city": "Navi Mumbai",
+    "state": "Maharashtra"
+}, {
+    "city": "Allahabad",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Ranchi",
+    "state": "Jharkhand"
+}, {
+    "city": "Howrah",
+    "state": "West Bengal"
+}, {
+    "city": "Coimbatore",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Jabalpur",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Gwalior",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Jodhpur",
+    "state": "Rajasthan"
+}, {
+    "city": "Madurai",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Raipur",
+    "state": "Chhattisgarh"
+}, {
+    "city": "Kota",
+    "state": "Rajasthan"
+}, {
+    "city": "Guwahati",
+    "state": "Assam"
+}, {
+    "city": "Chandigarh",
+    "state": "Chandigarh"
+}, {
+    "city": "Solapur",
+    "state": "Maharashtra"
+}, {
+    "city": "Hubballi-Dharwad",
+    "state": "Karnataka"
+}, {
+    "city": "Bareilly",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Moradabad",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Mysore",
+    "state": "Karnataka"
+}, {
+    "city": "Gurgaon",
+    "state": "Haryana"
+}, {
+    "city": "Aligarh",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Jalandhar",
+    "state": "Punjab"
+}, {
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Bhubaneswar",
+    "state": "Orissa"
+}, {
+    "city": "Salem",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Mira-Bhayandar",
+    "state": "Maharashtra"
+}, {
+    "city": "Warangal",
+    "state": "Telangana"
+}, {
+    "city": "Thiruvananthapuram",
+    "state": "Kerala"
+}, {
+    "city": "Guntur",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Bhiwandi",
+    "state": "Maharashtra"
+}, {
+    "city": "Saharanpur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Gorakhpur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Bikaner",
+    "state": "Rajasthan"
+}, {
+    "city": "Amravati",
+    "state": "Maharashtra"
+}, {
+    "city": "Noida",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Jamshedpur",
+    "state": "Jharkhand"
+}, {
+    "city": "Bhilai",
+    "state": "Chhattisgarh"
+}, {
+    "city": "Cuttak",
+    "state": "Orissa"
+}, {
+    "city": "Firozabad",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Kochi",
+    "state": "Kerala"
+}, {
+    "city": "Bhavnagar",
+    "state": "Gujarat"
+}, {
+    "city": "Dehradun",
+    "state": "Uttarakhand"
+}, {
+    "city": "Durgapur",
+    "state": "West Bengal"
+}, {
+    "city": "Asansol",
+    "state": "West Bengal"
+}, {
+    "city": "Nanded",
+    "state": "Maharashtra"
+}, {
+    "city": "Kolhapur",
+    "state": "Maharashtra"
+}, {
+    "city": "Ajmer",
+    "state": "Rajasthan"
+}, {
+    "city": "Gulbarga",
+    "state": "Karnataka"
+}, {
+    "city": "Jamnagar",
+    "state": "Gujarat"
+}, {
+    "city": "Ujjain",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Loni",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Siliguri",
+    "state": "West Bengal"
+}, {
+    "city": "Jhansi",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Ulhasnagar",
+    "state": "Maharashtra"
+}, {
+    "city": "Nellore",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Jammu",
+    "state": "Jammu and Kashmir"
+}, {
+    "city": "Sangli-Miraj and Kupwad",
+    "state": "Maharashtra"
+}, {
+    "city": "Belgaum",
+    "state": "Karnataka"
+}, {
+    "city": "Mangalore",
+    "state": "Karnataka"
+}, {
+    "city": "Ambattur",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Tirunelveli",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Malegaon",
+    "state": "Maharashtra"
+}, {
+    "city": "Gaya",
+    "state": "Bihar"
+}, {
+    "city": "Jalgaon",
+    "state": "Maharashtra"
+}, {
+    "city": "Udaipur",
+    "state": "Rajasthan"
+}, {
+    "city": "Maheshtala",
+    "state": "West Bengal"
+}, {
+    "city": "Tirupur",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Davanagere",
+    "state": "Karnataka"
+}, {
+    "city": "Kozhikode",
+    "state": "Kerala"
+}, {
+    "city": "Akola",
+    "state": "Maharashtra"
+}, {
+    "city": "Kurnool",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Rajpur Sonarpur",
+    "state": "West Bengal"
+}, {
+    "city": "Bokaro",
+    "state": "Jharkhand"
+}, {
+    "city": "South Dumdum",
+    "state": "West Bengal"
+}, {
+    "city": "Bellary",
+    "state": "Karnataka"
+}, {
+    "city": "Patiala",
+    "state": "Punjab"
+}, {
+    "city": "Gopalpur",
+    "state": "West Bengal"
+}, {
+    "city": "Agartala",
+    "state": "Tripura"
+}, {
+    "city": "Bhagalpur",
+    "state": "Bihar"
+}, {
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Bhatpara",
+    "state": "West Bengal"
+}, {
+    "city": "Panihati",
+    "state": "West Bengal"
+}, {
+    "city": "Latur",
+    "state": "Maharashtra"
+}, {
+    "city": "Dhule",
+    "state": "Maharashtra"
+}, {
+    "city": "Rohtak",
+    "state": "Haryana"
+}, {
+    "city": "Korba",
+    "state": "Chhattisgarh"
+}, {
+    "city": "Bhilwara",
+    "state": "Rajasthan"
+}, {
+    "city": "Brahmapur",
+    "state": "Orissa"
+}, {
+    "city": "Muzaffarpur",
+    "state": "Bihar"
+}, {
+    "city": "Ahmednagar",
+    "state": "Maharashtra"
+}, {
+    "city": "Mathura",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Kollam",
+    "state": "Kerala"
+}, {
+    "city": "Avadi",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Rajahmundry",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Kadapa",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Kamarhati",
+    "state": "West Bengal"
+}, {
+    "city": "Bilaspur",
+    "state": "Chhattisgarh"
+}, {
+    "city": "Shahjahanpur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Bijapur",
+    "state": "Karnataka"
+}, {
+    "city": "Rampur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Shivamogga(Shimoga)",
+    "state": "Karnataka"
+}, {
+    "city": "Chandrapur",
+    "state": "Maharashtra"
+}, {
+    "city": "Junagadh",
+    "state": "Gujarat"
+}, {
+    "city": "Thrissur",
+    "state": "Kerala"
+}, {
+    "city": "Alwar",
+    "state": "Rajasthan"
+}, {
+    "city": "Bardhaman",
+    "state": "West Bengal"
+}, {
+    "city": "Kulti",
+    "state": "West Bengal"
+}, {
+    "city": "Kakinada",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Nizamabad",
+    "state": "Telangana"
+}, {
+    "city": "Parbhani",
+    "state": "Maharashtra"
+}, {
+    "city": "Tumkur",
+    "state": "Karnataka"
+}, {
+    "city": "Hisar",
+    "state": "Haryana"
+}, {
+    "city": "Ozhukarai",
+    "state": "Pudicherry"
+}, {
+    "city": "Bihar Sharif",
+    "state": "Bihar"
+}, {
+    "city": "Panipat",
+    "state": "Haryana"
+}, {
+    "city": "Darbhanga",
+    "state": "Bihar"
+}, {
+    "city": "Bally",
+    "state": "West Bengal"
+}, {
+    "city": "Aizawi",
+    "state": "Mizoram"
+}, {
+    "city": "Dewas",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Ichakaranji",
+    "state": "Maharashtra"
+}, {
+    "city": "Tirupati",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Karnal",
+    "state": "Haryana"
+}, {
+    "city": "Bathinda",
+    "state": "Punjab"
+}, {
+    "city": "Jalna",
+    "state": "Maharashtra"
+}, {
+    "city": "Barasat",
+    "state": "West Bengal"
+}, {
+    "city": "Kirari Suleman Nagar",
+    "state": "Delhi"
+}, {
+    "city": "Purnia",
+    "state": "Bihar"
+}, {
+    "city": "Satna",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Mau",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Sonipat",
+    "state": "Haryana"
+}, {
+    "city": "Farrukhabad",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Sagar",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Rourkela",
+    "state": "Orissa"
+}, {
+    "city": "Durg",
+    "state": "Chhattisgarh"
+}, {
+    "city": "Imphal",
+    "state": "Manipur"
+}, {
+    "city": "Ratlam",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Hapur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Anantapur",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Arrah",
+    "state": "Bihar"
+}, {
+    "city": "Karimnagar",
+    "state": "Telangana"
+}, {
+    "city": "Etawah",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Ambernath",
+    "state": "Maharashtra"
+}, {
+    "city": "North Dumdum",
+    "state": "West Bengal"
+}, {
+    "city": "Bharatpur",
+    "state": "Rajasthan"
+}, {
+    "city": "Begusarai",
+    "state": "Bihar"
+}, {
+    "city": "New Delhi",
+    "state": "Delhi"
+}, {
+    "city": "Gandhidham",
+    "state": "Gujarat"
+}, {
+    "city": "Baranagar",
+    "state": "West Bengal"
+}, {
+    "city": "Tiruvottiyur",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Puducherry",
+    "state": "Puducherry"
+}, {
+    "city": "Sikar",
+    "state": "Rajasthan"
+}, {
+    "city": "Thoothukudi",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Rewa",
+    "state": "Madhya Pradesh"
+}, {
+    "city": "Mirzapur",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Raichur",
+    "state": "Karnataka"
+}, {
+    "city": "Pali",
+    "state": "Rajasthan"
+}, {
+    "city": "Khammam",
+    "state": "Telangana"
+}, {
+    "city": "Vizianagaram",
+    "state": "Andhra Pradesh"
+}, {
+    "city": "Katihar",
+    "state": "Bihar"
+}, {
+    "city": "Haridwar",
+    "state": "Uttarakhand"
+}, {
+    "city": "Sri Ganganagar",
+    "state": "Rajasthan"
+}, {
+    "city": "Karawal Nagar",
+    "state": "Delhi"
+}, {
+    "city": "Nagercoil",
+    "state": "Tamil Nadu"
+}, {
+    "city": "Mango",
+    "state": "Jharkhand"
+}, {
+    "city": "Bulandshahr",
+    "state": "Uttar Pradesh"
+}, {
+    "city": "Thanjavur",
+    "state": "Tamil Nadu"
+}];
+var city = {
+    "Achalpur": "444805",
+    "Achhnera": "283101",
+    "Adalaj": "382421",
+    "Adilabad": "504001",
+    "Adityapur": "832109",
+    "Adoni": "518301",
+    "Adoor": "691523",
+    "Adra": "723121",
+    "Adyar": "600020",
+    "Afzalpur": "560007",
+    "Agartala": "799001",
+    "Agra": "282001",
+    "Ahmedabad": "380001",
+    "Ahmednagar": "414001",
+    "Aizawl": "796001",
+    "Ajmer": "305001",
+    "Akola": "131402",
+    "Akot": "444101",
+    "Alappuzha": "688001",
+    "Aligarh": "202001",
+    "Alipurduar": "736121",
+    "Alirajpur": "457887",
+    "Allahabad": "211001",
+    "Alwar": "301001",
+    "Amalapuram": "533201",
+    "Amalner": "425401",
+    "Ambejogai": "431517",
+    "Ambikapur": "497001",
+    "Amravati": "440008",
+    "Amreli": "365601",
+    "Amritsar": "143001",
+    "Amroha": "244221",
+    "Anakapalle": "531001",
+    "Anand": "110005",
+    "Anantapur": "515001",
+    "Anantnag": "192101",
+    "Anjangaon": "444701",
+    "Anjar": "370110",
+    "Ankleshwar": "393001",
+    "Arakkonam": "631001",
+    "Arambagh": "712601",
+    "Araria": "854339",
+    "Arrah": "802301",
+    "Arsikere": "573103",
+    "Aruppukkottai": "626101",
+    "Arvi": "442001",
+    "Arwal": "804419",
+    "Asansol": "713301",
+    "Asarganj": "813201",
+    "Ashok-Nagar": "600083",
+    "Athni": "591304",
+    "Attingal": "695101",
+    "Aurangabad": "431003",
+    "Azamgarh": "276001",
+    "Bagaha": "845101",
+    "Bageshwar": "263642",
+    "Bahadurgarh": "124507",
+    "Baharampur": "742101",
+    "Bahraich": "271801",
+    "Balaghat": "481001",
+    "Balangir": "767001",
+    "Baleshwar-Town": "756001",
+    "Balurghat": "733101",
+    "Bankura": "722101",
+    "Bapatla": "522101",
+    "Baramula": "193101",
+    "Barbil": "758035",
+    "Bargarh": "768028",
+    "Barh": "641018",
+    "Baripada-Town": "757001",
+    "Barmer": "344001",
+    "Barnala": "148101",
+    "Barpeta": "781328",
+    "Batala": "143505",
+    "Bathinda": "151001",
+    "Begusarai": "851101",
+    "Belagavi": "577450",
+    "Bellampalle": "504251",
+    "Belonia": "799155",
+    "Bengaluru": "560001",
+    "Bettiah": "845438",
+    "Bhadrachalam": "507111",
+    "Bhadrak": "756100",
+    "Bhagalpur": "812001",
+    "Bhainsa": "504103",
+    "Bharatpur": "900309",
+    "Bharuch": "392001",
+    "Bhatapara": "493118",
+    "Bhavnagar": "364001",
+    "Bhawanipatna": "766001",
+    "Bheemunipatnam": "531162",
+    "Bhilai-Nagar": "490006",
+    "Bhilwara": "311001",
+    "Bhimavaram": "534202",
+    "Bhiwandi": "421302",
+    "Bhiwani": "127021",
+    "Bhongir": "508116",
+    "Bhopal": "462016",
+    "Bhubaneswar": "751019",
+    "Bhuj": "370001",
+    "Bikaner": "334001",
+    "Bilaspur": "495001",
+    "Bobbili": "535558",
+    "Bodhan": "503185",
+    "Bokaro-Steel-City": "827001",
+    "Brahmapur": "760001",
+    "Buxar": "802101",
+    "Chaibasa": "833201",
+    "Chalakudy": "680307",
+    "Chandausi": "202412",
+    "Chandigarh": "160022",
+    "Changanassery": "686101",
+    "Charkhi-Dadri": "127306",
+    "Chatra": "825401",
+    "Chennai": "600001",
+    "Cherthala": "673016",
+    "Chhapra": "841301",
+    "Chhattisgarh": "493661",
+    "Chikkamagaluru": "577101",
+    "Chilakaluripet": "522616",
+    "Chirala": "523155",
+    "Chirimiri-Colly": "497449",
+    "Chirkunda": "828202",
+    "Chittoor": "517001",
+    "Chittur-Thathamangalam": "678101",
+    "Coimbatore": "560057",
+    "Cuttack": "753001",
+    "Dalli-Rajhara": "491228",
+    "Darbhanga": "846004",
+    "Darjiling": "734101",
+    "Davanagere": "577004",
+    "Deesa": "385535",
+    "Dehradun": "248001",
+    "Dehri-on-Sone": "821307",
+    "Delhi": "110001",
+    "Deoghar": "814112",
+    "Dhamtari": "493773",
+    "Dhanbad": "826001",
+    "Dharmanagar": "799250",
+    "Dharmavaram": "515671",
+    "Dhenkanal": "759001",
+    "Dhoraji": "360410",
+    "Dhubri": "783301",
+    "Dhule": "424001",
+    "Dhuri": "148024",
+    "Dibrugarh": "786004",
+    "Dimapur": "797112",
+    "Diphu": "782460",
+    "Dumka": "814101",
+    "Dumraon": "800001",
+    "Durg": "491001",
+    "Eluru": "434556",
+    "English-Bazar": "732101",
+    "Erode": "638001",
+    "Etawah": "206001",
+    "Faridabad": "121001",
+    "Faridkot": "151203",
+    "Farooqnagar": "509216",
+    "Fatehabad": "201001",
+    "Fatehpur-Sikri": "283110",
+    "Fazilka": "152123",
+    "Firozabad": "283203",
+    "Firozpur": "152002",
+    "Forbesganj": "854318",
+    "Gadwal": "509125",
+    "Gangarampur": "733124",
+    "Gaya": "110090",
+    "Giridih": "815301",
+    "Goalpara": "783380",
+    "Gobichettipalayam": "638453",
+    "Gobindgarh": "147301",
+    "Godhra": "389001",
+    "Gohana": "131301",
+    "Gokak": "591307",
+    "Gooty": "515405",
+    "Gopalganj": "841428",
+    "Gudivada": "521301",
+    "Gudur": "524101",
+    "Gumia": "829112",
+    "Guntakal": "515801",
+    "Guntur": "522201",
+    "Gurdaspur": "145001",
+    "Gurgaon": "122001",
+    "Guruvayoor": "680101",
+    "Guwahati": "781001",
+    "Gwalior": "474001",
+    "Habra": "743271",
+    "Hajipur": "844101",
+    "Haldwani-cum-Kathgodam": "263139",
+    "Hansi": "125033",
+    "Hapur": "245101",
+    "Haridwar": "249403",
+    "Hazaribag": "825301",
+    "Hindupur": "515201",
+    "Hisar": "233304",
+    "Hoshiarpur": "146001",
+    "Hubli-Dharwad": "580031",
+    "Hugli-Chinsurah": "712101",
+    "Hyderabad": "500001",
+    "Ichalkaranji": "416115",
+    "Imphal": "795001",
+    "Indore": "452001",
+    "Itarsi": "461111",
+    "Jabalpur": "482002",
+    "Jagdalpur": "494001",
+    "Jaggaiahpet": "521175",
+    "Jagraon": "142025",
+    "Jagtial": "505327",
+    "Jaipur": "302001",
+    "Jalandhar": "144001",
+    "Jalpaiguri": "735101",
+    "Jamalpur": "380022",
+    "Jammalamadugu": "516434",
+    "Jammu": "180001",
+    "Jamnagar": "361004",
+    "Jamshedpur": "831302",
+    "Jamui": "811307",
+    "Jangaon": "506167",
+    "Jatani": "752050",
+    "Jehanabad": "804432",
+    "Jhansi": "284128",
+    "Jhargram": "721507",
+    "Jharsuguda": "768216",
+    "Jhumri-Tilaiya": "825409",
+    "Jind": "126102",
+    "Jodhpur": "342001",
+    "Jorhat": "785001",
+    "Kadapa": "516213",
+    "Kadi": "382715",
+    "Kadiri": "515591",
+    "Kagaznagar": "504296",
+    "Kailasahar": "799277",
+    "Kaithal": "136027",
+    "Kakinada": "533003",
+    "Kalimpong": "734301",
+    "Kalpi": "208012",
+    "Kalyan-Dombivali": "421201",
+    "Kamareddy": "140604",
+    "Kancheepuram": "631501",
+    "Kandukur": "523105",
+    "Kanhangad": "671315",
+    "Kannur": "670109",
+    "Kanpur": "208001",
+    "Kapadvanj": "387001",
+    "Kapurthala": "144601",
+    "Karaikal": "609602",
+    "Karimganj": "788710",
+    "Karimnagar": "500013",
+    "Karjat": "410201",
+    "Karnal": "132001",
+    "Karur": "639004",
+    "Karwar": "581301",
+    "Kasaragod": "671121",
+    "Kashipur": "246277",
+    "Katihar": "854105",
+    "Katni": "483501",
+    "Kavali": "524201",
+    "Kayamkulam": "690502",
+    "Kendrapara": "754240",
+    "Keshod": "362220",
+    "Khair": "202138",
+    "Khambhat": "413319",
+    "Khammam": "507001",
+    "Khanna": "160065",
+    "Kharagpur": "721301",
+    "Kharar": "140301",
+    "Khowai": "799201",
+    "Kishanganj": "110031",
+    "Kochi": "713202",
+    "Kodungallur": "680664",
+    "Kohima": "797001",
+    "Kolar": "563101",
+    "Kolkata": "700001",
+    "Kollam": "691001",
+    "Koratla": "505326",
+    "Korba": "495677",
+    "Kot-Kapura": "151204",
+    "Kothagudem": "507101",
+    "Kottayam": "686001",
+    "Kovvur": "534350",
+    "Koyilandy": "673305",
+    "Kozhikode": "673001",
+    "Kunnamkulam": "680503",
+    "Kurnool": "518001",
+    "Lachhmangarh": "332311",
+    "Ladnu": "341306",
+    "Ladwa": "132132",
+    "Lahar": "477445",
+    "Laharpur": "261135",
+    "Lakheri": "323603",
+    "Lakhimpur": "262701",
+    "Lakhisarai": "811311",
+    "Lakshmeshwar": "582116",
+    "Lal-Gopalganj-Nindaura": "841428",
+    "Lalganj": "226001",
+    "Lalgudi": "621601",
+    "Lalitpur": "284403",
+    "Lalsot": "303510",
+    "Lanka": "221005",
+    "Lar": "274508",
+    "Lathi": "364430",
+    "Latur": "413512",
+    "Lilong": "795130",
+    "Limbdi": "363421",
+    "Loha": "431708",
+    "Lohardaga": "835302",
+    "Lonavla": "410401",
+    "Longowal": "148106",
+    "Loni": "201102",
+    "Losal": "332025",
+    "Lucknow": "226001",
+    "Ludhiana": "141401",
+    "Lumding": "782447",
+    "Lunglei": "796701",
+    "Macherla": "522426",
+    "Machilipatnam": "521001",
+    "Madanapalle": "517325",
+    "Maddur": "571422",
+    "Madhepura": "852113",
+    "Madhubani": "847211",
+    "Madhugiri": "572132",
+    "Madhupur": "500081",
+    "Madikeri": "571201",
+    "Madurai": "625001",
+    "Magadi": "560023",
+    "Mahad": "402301",
+    "Mahalingapura": "587312",
+    "Maharajganj": "841238",
+    "Maharajpur": "247671",
+    "Mahasamund": "493445",
+    "Mahemdabad": "387130",
+    "Mahendragarh": "385340",
+    "Mahesana": "384001",
+    "Mahidpur": "500010",
+    "Mahnar-Bazar": "844506",
+    "Mahuva": "364290",
+    "Maihar": "485771",
+    "Mainaguri": "735224",
+    "Makhdumpur": "244251",
+    "Makrana": "341505",
+    "Malappuram": "676504",
+    "Malavalli": "571430",
+    "Malda": "732101",
+    "Malegaon": "423105",
+    "Malerkotla": "401675",
+    "Malkangiri": "764044",
+    "Malkapur": "443101",
+    "Malout": "152107",
+    "Malpura": "304502",
+    "Malur": "563130",
+    "Manachanallur": "621005",
+    "Manasa": "458110",
+    "Manavadar": "362630",
+    "Manawar": "454446",
+    "Mancherial": "504208",
+    "Mandalgarh": "311604",
+    "Mandamarri": "504231",
+    "Mandapeta": "533308",
+    "Mandawa": "333704",
+    "Mandi": "147301",
+    "Mandi-Dabwali": "125104",
+    "Mandideep": "462046",
+    "Mandla": "482002",
+    "Mandsaur": "457550",
+    "Mandvi": "400003",
+    "Mandya": "571401",
+    "Manendragarh": "497442",
+    "Mangaldoi": "784125",
+    "Mangaluru": "575003",
+    "Mangalvedhe": "575003",
+    "Manglaur": "575003",
+    "Mangrol": "362225",
+    "Mangrulpir": "444101",
+    "Manihari": "821105",
+    "Manjlegaon": "423203",
+    "Mankachar": "783131",
+    "Manmad": "423104",
+    "Mansa": "151505",
+    "Manuguru": "507117",
+    "Manvi": "584123",
+    "Manwath": "431505",
+    "Mapusa": "403507",
+    "Margao": "403601",
+    "Margherita": "786181",
+    "Marhaura": "841402",
+    "Mariani": "785634",
+    "Marigaon": "782105",
+    "Markapur": "523316",
+    "Masaurhi": "800001",
+    "Mathabhanga": "736101",
+    "Mathura": "280001",
+    "Mattannur": "670702",
+    "Mavelikkara": "690101",
+    "Mavoor": "673661",
+    "Mayang-Imphal": "795132",
+    "Medak": "502110",
+    "Medinipur": "721636",
+    "Meerut": "250001",
+    "Mehkar": "443303",
+    "Memari": "713146",
+    "Merta-City": "341510",
+    "Mhaswad": "415509",
+    "Mira-Bhayandar": "401107",
+    "Mirganj": "841438",
+    "Miryalaguda": "508207",
+    "Modasa": "383315",
+    "Modinagar": "201204",
+    "Moga": "142001",
+    "Mohali": "160055",
+    "Mokameh": "803302",
+    "Mokokchung": "798601",
+    "Moradabad": "244001",
+    "Morena": "476001",
+    "Mormugao": "403803",
+    "Morshi": "444601",
+    "Motihari": "845401",
+    "Motipur": "843111",
+    "Mount-Abu": "307501",
+    "Mudabidri": "574227",
+    "Mudalagi": "591312",
+    "Muddebihal": "586212",
+    "Mudhol": "585364",
+    "Mukerian": "144211",
+    "Mukhed": "431715",
+    "Muktsar": "152026",
+    "Mulbagal": "563131",
+    "Multai": "460661",
+    "Mumbai": "400001",
+    "Mundargi": "582118",
+    "Mundi": "123411",
+    "Mungeli": "595334",
+    "Munger": "811201",
+    "Murshidabad": "742212",
+    "Murtijapur": "444107",
+    "Musabani": "832104",
+    "Mussoorie": "248179",
+    "Muvattupuzha": "686661",
+    "Muzaffarpur": "843109",
+    "Mysore": "401107",
+    "Nabadwip": "741302",
+    "Nabarangapur": "764059",
+    "Nabha": "147201",
+    "Nadbai": "321602",
+    "Nadiad": "387001",
+    "Nagaon": "782001",
+    "Nagapattinam": "611001",
+    "Nagari": "517590",
+    "Nagarkurnool": "509209",
+    "Nagaur": "341306",
+    "Nagda": "456331",
+    "Nagercoil": "629001",
+    "Nagina": "246762",
+    "Nagla": "207001",
+    "Nagpur": "813501",
+    "Nahan": "173001",
+    "Naharlagun": "791110",
+    "Naidupet": "524126",
+    "Naihati": "743165",
+    "Naila-Janjgir": "495668",
+    "Nainital": "263001",
+    "Nainpur": "481776",
+    "Najibabad": "246763",
+    "Nakodar": "144001",
+    "Nakur": "247342",
+    "Nalbari": "781335",
+    "Namagiripettai": "637406",
+    "Namakkal": "637001",
+    "Nanded-Waghala": "431606",
+    "Nandgaon": "423106",
+    "Nandivaram-Guduvancheri": "603202",
+    "Nandura": "443404",
+    "Nandurbar": "425412",
+    "Nandyal": "518501",
+    "Nanjangud": "571301",
+    "Nanjikottai": "613006",
+    "Nanpara": "271865",
+    "Narasapuram": "534275",
+    "Narasaraopet": "522601",
+    "Naraura": "202389",
+    "Narayanpet": "509210",
+    "Nargund": "582207",
+    "Narkhed": "441304",
+    "Narnaul": "123001",
+    "Narsinghgarh": "465669",
+    "Narsipatnam": "531116",
+    "Narwana": "126116",
+    "Nashik": "422001",
+    "Nasirabad": "202001",
+    "Natham": "624401",
+    "Nathdwara": "313301",
+    "Naugachhia": "853204",
+    "Naugawan-Sadat": "262201",
+    "Nautanwa": "273164",
+    "Navsari": "394002",
+    "Nawabganj": "208002",
+    "Nawada": "805124",
+    "Nawanshahr": "144505",
+    "Nedumangad": "695541",
+    "Neem-Ka-Thana": "332713",
+    "Neemuch": "458441",
+    "Nehtaur": "246733",
+    "Nelamangala": "562123",
+    "Nellikuppam": "607105",
+    "Nellore": "524001",
+    "Nepanagar": "450221",
+    "New-Delhi": "110001",
+    "Neyveli-(TS)": "607801",
+    "Neyyattinkara": "695121",
+    "Nidadavole": "534301",
+    "Nilambur": "679329",
+    "Nilanga": "413521",
+    "Nimbahera": "312601",
+    "Nirmal": "401304",
+    "Niwai": "333305",
+    "Niwari": "201204",
+    "Nizamabad": "503001",
+    "Nohar": "335523",
+    "Noida": "201301",
+    "Nokha": "334803",
+    "Nongstoin": "793119",
+    "Noorpur": "246734",
+    "North-Lakhimpur": "787001",
+    "Nowgong": "471201",
+    "Nuzvid": "521201",
+    "Obra": "231219",
+    "Oddanchatram": "624619",
+    "Ongole": "523001",
+    "Orai": "285001",
+    "Osmanabad": "413501",
+    "Ottappalam": "679101",
+    "Pachora": "424201",
+    "Pachore": "465683",
+    "Padmanabhapuram": "629175",
+    "Padra": "390020",
+    "Padrauna": "274304",
+    "Paithan": "431001",
+    "Pakaur": "816107",
+    "Palacole": "534260",
+    "Palai": "686575",
+    "Palakkad": "678001",
+    "Palampur": "176061",
+    "Palani": "624601",
+    "Palanpur": "385545",
+    "Palasa-Kasibugga": "532222",
+    "Palghar": "401404",
+    "Pali": "306401",
+    "Palia-Kalan": "262902",
+    "Palitana": "364270",
+    "Palladam": "641669",
+    "Pallapatti": "639205",
+    "Pallikonda": "635809",
+    "Palwal": "121102",
+    "Palwancha": "503111",
+    "Panagar": "483220",
+    "Panagudi": "627109",
+    "Panaji": "403001",
+    "Panamattom": "686522",
+    "Panchkula": "134115",
+    "Pandharkaoda": "445001",
+    "Pandharpur": "413304",
+    "Pandhurna": "480001",
+    "Panipat": "132103",
+    "Panna": "488001",
+    "Panniyannur": "670679",
+    "Panruti": "607106",
+    "Panvel": "410206",
+    "Pappinisseri": "670561",
+    "Paradip": "754142",
+    "Paramakudi": "623707",
+    "Parangipettai": "608502",
+    "Parasi": "495118",
+    "Parbhani": "431401",
+    "Pardi": "596191",
+    "Parlakhemundi": "761200",
+    "Parli": "431515",
+    "Partur": "431501",
+    "Parvathipuram": "629003",
+    "Paschim-Punropara": "721101",
+    "Pasighat": "791102",
+    "Patan": "385340",
+    "Pathanamthitta": "689101",
+    "Pathankot": "110032",
+    "Pathardi": "414102",
+    "Pathri": "431401",
+    "Patiala": "147001",
+    "Patna": "800001",
+    "Patratu": "829118",
+    "Pattamundai": "754215",
+    "Patti": "143416",
+    "Pattukkottai": "611001",
+    "Patur": "444501",
+    "Pauni": "441910",
+    "Pauri": "246174",
+    "Pavagada": "561202",
+    "Pedana": "521366",
+    "Peddapuram": "533437",
+    "Pehowa": "136128",
+    "Pen": "402107",
+    "Perambalur": "621212",
+    "Peravurani": "614804",
+    "Peringathur": "670675",
+    "Perinthalmanna": "679321",
+    "Periyakulam": "625601",
+    "Periyasemur": "638003",
+    "Perumbavoor": "683542",
+    "Petlad": "388450",
+    "Phagwara": "144401",
+    "Phalodi": "302016",
+    "Phaltan": "415523",
+    "Phillaur": "144410",
+    "Phulabani": "762001",
+    "Phulera": "303338",
+    "Phulpur": "276304",
+    "Phusro": "829144",
+    "Pihani": "241406",
+    "Pilani": "333031",
+    "Pilibanga": "335803",
+    "Pilibhit": "262001",
+    "Pilkhuwa": "245304",
+    "Pindwara": "307022",
+    "Pinjore": "134102",
+    "Pipar-City": "342601",
+    "Pipariya": "391760",
+    "Piriyapatna": "571107",
+    "Piro": "813201",
+    "Pithampur": "453331",
+    "Pithapuram": "533450",
+    "Pithoragarh": "262576",
+    "Pollachi": "642002",
+    "Polur": "606803",
+    "Pondicherry": "605001",
+    "Ponnani": "679577",
+    "Ponneri": "601204",
+    "Ponnur": "522124",
+    "Porbandar": "360575",
+    "Porsa": "476115",
+    "Port-Blair": "744101",
+    "Powayan": "242401",
+    "Prantij": "383205",
+    "Pratapgarh": "230138",
+    "Proddatur": "516368",
+    "Pudukkottai": "622001",
+    "Pudupattinam": "603102",
+    "Pukhrayan": "202001",
+    "Pulgaon": "442302",
+    "Punalur": "691305",
+    "Pune": "411009",
+    "Punganur": "517247",
+    "Punjaipugalur": "639113",
+    "Puranpur": "262122",
+    "Puri": "752001",
+    "Purna": "444204",
+    "Purnia": "854301",
+    "Purulia": "723101",
+    "Pusad": "445204",
+    "Puthuppally": "690527",
+    "Puttur": "517583",
+    "Qadian": "143516",
+    "Rabkavi-Banhatti": "587311",
+    "Radhanpur": "384002",
+    "Rae-Bareli": "229010",
+    "Raghogarh-Vijaypur": "473226",
+    "Raghunathganj": "742225",
+    "Raghunathpur": "700059",
+    "Rahatgarh": "470119",
+    "Rahuri": "413705",
+    "Raiganj": "733129",
+    "Raigarh": "496001",
+    "Raikot": "141109",
+    "Raipur": "942001",
+    "Rairangpur": "757043",
+    "Raisen": "462038",
+    "Raisinghnagar": "335051",
+    "Rajagangapur": "770017",
+    "Rajahmundry": "533101",
+    "Rajakhera": "328025",
+    "Rajaldesar": "331802",
+    "Rajam": "532127",
+    "Rajampet": "516115",
+    "Rajapalayam": "626117",
+    "Rajauri": "110027",
+    "Rajgarh": "301408",
+    "Rajgir": "803116",
+    "Rajkot": "360004",
+    "Rajnandgaon": "491441",
+    "Rajpipla": "393145",
+    "Rajpura": "140401",
+    "Rajsamand": "313301",
+    "Rajula": "365560",
+    "Rajura": "442905",
+    "Ramachandrapuram": "502032",
+    "Ramagundam": "505209",
+    "Ramanagaram": "562160",
+    "Ramanathapuram": "641045",
+    "Ramdurg": "591123",
+    "Rameshwaram": "600017",
+    "Ramganj-Mandi": "326519",
+    "Ramgarh": "829122",
+    "Ramnagar": "244715",
+    "Ramngarh": "829122",
+    "Rampur": "244901",
+    "Rampur-Maniharan": "247451",
+    "Rampura-Phul": "151103",
+    "Rampurhat": "731224",
+    "Ramtek": "441106",
+    "Ranaghat": "741201",
+    "Ranavav": "360560",
+    "Ranchi": "834001",
+    "Rangia": "781354",
+    "Rania": "125076",
+    "Ranibennur": "581115",
+    "Ranipet": "632403",
+    "Rapar": "370165",
+    "Rasipuram": "637408",
+    "Ratangarh": "331022",
+    "Rath": "210431",
+    "Ratia": "125051",
+    "Ratlam": "457001",
+    "Ratnagiri": "415612",
+    "Rau": "453331",
+    "Raurkela": "769001",
+    "Rawatbhata": "323307",
+    "Raxaul-Bazar": "845305",
+    "Rayachoti": "516269",
+    "Rayagada": "765001",
+    "Reengus": "332404",
+    "Rehli": "470227",
+    "Renigunta": "517506",
+    "Renukoot": "231217",
+    "Reoti": "277209",
+    "Repalle": "522265",
+    "Revelganj": "841315",
+    "Rewa": "486001",
+    "Rewari": "123401",
+    "Rishikesh": "249201",
+    "Risod": "444506",
+    "Robertsganj": "231216",
+    "Robertson-Pet": "563122",
+    "Rohtak": "124001",
+    "Ron": "582209",
+    "Roorkee": "247667",
+    "Rosera": "848210",
+    "Rudauli": "225411",
+    "Rudrapur": "263153",
+    "Rupnagar": "144108",
+    "Sadabad": "281301",
+    "Sadasivpet": "502291",
+    "Sadri": "306702",
+    "Sadulpur": "331023",
+    "Sadulshahar": "335062",
+    "Safidon": "126112",
+    "Safipur": "241504",
+    "Sagar": "577401",
+    "Sagara": "577401",
+    "Sagwara": "314025",
+    "Saharanpur": "247001",
+    "Saharsa": "852201",
+    "Sahaspur": "248197",
+    "Sahaswan": "243638",
+    "Sahawar": "173202",
+    "Sahibganj": "816109",
+    "Sahjanwa": "272209",
+    "Saidpur": "275202",
+    "Saiha": "796901",
+    "Sailu": "431503",
+    "Sainthia": "731234",
+    "Sakaleshapura": "573134",
+    "Sakti": "495689",
+    "Salaya": "361310",
+    "Salem": "636004",
+    "Salur": "535591",
+    "Samalkha": "110037",
+    "Samalkot": "533440",
+    "Samana": "147101",
+    "Samastipur": "848101",
+    "Sambalpur": "768017",
+    "Sambhal": "244403",
+    "Sambhar": "303604",
+    "Samdhan": "209601",
+    "Samthar": "284001",
+    "Sanand": "382210",
+    "Sanawad": "451111",
+    "Sanchore": "343041",
+    "Sandi": "229001",
+    "Sandila": "241204",
+    "Sangamner": "422605",
+    "Sangareddy": "502001",
+    "Sangaria": "342001",
+    "Sangli": "416416",
+    "Sangole": "413001",
+    "Sangrur": "148101",
+    "Sankarankovil": "627756",
+    "Sankari": "636308",
+    "Sankeshwara": "591313",
+    "Santipur": "741404",
+    "Sarangpur": "380002",
+    "Sardarshahar": "331403",
+    "Sardhana": "250001",
+    "Sarni": "460447",
+    "Sarsod": "125121",
+    "Sasaram": "821115",
+    "Sasvad": "412301",
+    "Satana": "423301",
+    "Satara": "415001",
+    "Sathyamangalam": "638401",
+    "Satna": "485001",
+    "Sattenapalle": "522410",
+    "Sattur": "580009",
+    "Saunda": "201204",
+    "Saundatti-Yellamma": "591126",
+    "Sausar": "480106",
+    "Savanur": "581118",
+    "Savarkundla": "364515",
+    "Sawai-Madhopur": "322021",
+    "Sawantwadi": "416510",
+    "Sedam": "585222",
+    "Sehore": "466001",
+    "Sendhwa": "451666",
+    "Seohara": "246746",
+    "Seoni": "480661",
+    "Seoni-Malwa": "461223",
+    "Shahabad": "136135",
+    "Shahade": "425409",
+    "Shahbad": "110042",
+    "Shahdol": "484001",
+    "Shahganj": "282010",
+    "Shahjahanpur": "242001",
+    "Shahpur": "380001",
+    "Shahpura": "462016",
+    "Shajapur": "465001",
+    "Shamgarh": "458883",
+    "Shamli": "247776",
+    "Shegaon": "444203",
+    "Sheikhpura": "800015",
+    "Shenkottai": "627809",
+    "Sheoganj": "802301",
+    "Sheohar": "843329",
+    "Sherghati": "824211",
+    "Sherkot": "246747",
+    "Shikaripur": "577427",
+    "Shikohabad": "205135",
+    "Shillong": "793003",
+    "Shimla": "171001",
+    "Shirdi": "423109",
+    "Shirpur-Warwade": "425405",
+    "Shirur": "412208",
+    "Shishgarh": "243001",
+    "Shivamogga": "577401",
+    "Shivpuri": "473551",
+    "Sholavandan": "625214",
+    "Sholingur": "631001",
+    "Shoranur": "679122",
+    "Shrigonda": "413701",
+    "Shrirampur": "413709",
+    "Shrirangapattana": "571438",
+    "Shujalpur": "465333",
+    "Sibsagar": "785640",
+    "Siddipet": "502103",
+    "Sidhi": "261303",
+    "Sidhpur": "384151",
+    "Sidlaghatta": "562105",
+    "Sihora": "483225",
+    "Sikanderpur": "122001",
+    "Sikandra-Rao": "204215",
+    "Sikandrabad": "203205",
+    "Sikar": "332001",
+    "Silao": "803117",
+    "Silapathar": "787059",
+    "Silchar": "500013",
+    "Siliguri": "734001",
+    "Sillod": "431112",
+    "Silvassa": "396230",
+    "Simdega": "835223",
+    "Sindagi": "586128",
+    "Sindhnur": "584128",
+    "Singrauli": "486889",
+    "Sinnar": "422103",
+    "Sira": "572106",
+    "Sircilla": "505301",
+    "Sirhind-Fatehgarh-Sahib": "140406",
+    "Sirkali": "609110",
+    "Sirohi": "307001",
+    "Sironj": "464228",
+    "Sirsa": "125077",
+    "Sirsi": "581401",
+    "Siruguppa": "583121",
+    "Sitamarhi": "843301",
+    "Sitapur": "261136",
+    "Sitarganj": "262001",
+    "Sivaganga": "630201",
+    "Sivagiri": "641044",
+    "Sivakasi": "626123",
+    "Siwan": "841233",
+    "Sohagpur": "461771",
+    "Sohna": "122103",
+    "Sojat": "306103",
+    "Solan": "173212",
+    "Solapur": "413003",
+    "Sonamukhi": "722207",
+    "Sonepur": "767017",
+    "Songadh": "394670",
+    "Sonipat": "131001",
+    "Sopore": "193201",
+    "Soro": "756045",
+    "Soron": "212405",
+    "Soyagaon": "423203",
+    "Sri-Madhopur": "332715",
+    "Srikakulam": "532004",
+    "Srikalahasti": "517644",
+    "Srinagar": "545878",
+    "Srinivaspur": "563135",
+    "Srirampore": "712201",
+    "Srivilliputhur": "626135",
+    "Sugauli": "845456",
+    "Sujangarh": "331507",
+    "Sujanpur": "176109",
+    "Sullurpeta": "524121",
+    "Sultanpur": "228001",
+    "Sumerpur": "306902",
+    "Sunabeda": "763002",
+    "Sunam": "148028",
+    "Sundargarh": "770001",
+    "Sundarnagar": "174402",
+    "Supaul": "852030",
+    "Surandai": "627859",
+    "Surat": "395001",
+    "Suratgarh": "335804",
+    "Suri": "731101",
+    "Suriyampalayam": "637209",
+    "Suryapet": "508213",
+    "Tadepalligudem": "534101",
+    "Tadpatri": "515411",
+    "Takhatgarh": "140119",
+    "Taki": "700019",
+    "Talaja": "364140",
+    "Talcher": "759100",
+    "Talegaon-Dabhade": "410507",
+    "Talikota": "586122",
+    "Taliparamba": "670141",
+    "Talode": "425413",
+    "Talwara": "144216",
+    "Tamluk": "721636",
+    "Tanda": "144004",
+    "Tandur": "501141",
+    "Tanuku": "534211",
+    "Tarakeswar": "712410",
+    "Tarana": "422006",
+    "Taranagar": "500019",
+    "Tarbha": "767016",
+    "Tarikere": "577228",
+    "Tarn-Taran": "143401",
+    "Tasgaon": "416312",
+    "Tehri": "249192",
+    "Tenali": "522201",
+    "Tenkasi": "627811",
+    "Terdal": "587315",
+    "Tezpur": "784001",
+    "Thammampatti": "636113",
+    "Thana-Bhawan": "247777",
+    "Thane": "400601",
+    "Thanesar": "136118",
+    "Thangadh": "363530",
+    "Thanjavur": "613007",
+    "Tharad": "385565",
+    "Tharamangalam": "636502",
+    "Theni-Allinagaram": "625531",
+    "Thirumangalam": "600040",
+    "Thirupuvanam": "630611",
+    "Thiruvalla": "689101",
+    "Thiruvallur": "602001",
+    "Thiruvananthapuram": "695013",
+    "Thiruvarur": "610104",
+    "Thodupuzha": "685584",
+    "Thoubal": "795138",
+    "Thrissur": "680001",
+    "Thuraiyur": "621010",
+    "Tikamgarh": "472001",
+    "Tilhar": "242307",
+    "Tindivanam": "604001",
+    "Tinsukia": "784153",
+    "Tiptur": "572202",
+    "Tirora": "441911",
+    "Tiruchendur": "628215",
+    "Tiruchengode": "637211",
+    "Tiruchirappalli": "620024",
+    "Tirukalukundram": "603104",
+    "Tirukkoyilur": "605757",
+    "Tirunelveli": "627001",
+    "Tirupathur": "635601",
+    "Tirupati": "517760",
+    "Tiruppur": "641602",
+    "Tirur": "676101",
+    "Tiruttani": "631209",
+    "Tiruvannamalai": "606601",
+    "Tiruvethipuram": "604407",
+    "Tiruvuru": "521235",
+    "Tirwaganj": "209732",
+    "Titlagarh": "767033",
+    "Tittakudi": "606105",
+    "Todabhim": "321611",
+    "Todaraisingh": "304505",
+    "Tohana": "125120",
+    "Tonk": "304001",
+    "Tuensang": "798601",
+    "Tulsipur": "212217",
+    "Tumkur": "572102",
+    "Tumsar": "441912",
+    "Tundla": "283204",
+    "Tuni": "533401",
+    "Tura": "794001",
+    "Udaipur": "313001",
+    "Udaipurwati": "333307",
+    "Udgir": "413517",
+    "Udhagamandalam": "643001",
+    "Udhampur": "152004",
+    "Udumalaipettai": "642154",
+    "Udupi": "576101",
+    "Ujjain": "456001",
+    "Umarga": "413606",
+    "Umaria": "484661",
+    "Umarkhed": "445206",
+    "Umbergaon": "263001",
+    "Umred": "441203",
+    "Umreth": "388210",
+    "Una": "174303",
+    "Unjha": "384170",
+    "Unnamalaikadai": "629179",
+    "Unnao": "209861",
+    "Upleta": "360490",
+    "Uran": "400702",
+    "Uran-Islampur": "415409",
+    "Uravakonda": "515812",
+    "Urmar-Tanda": "144204",
+    "Usilampatti": "625532",
+    "Uthamapalayam": "625533",
+    "Uthiramerur": "603406",
+    "Utraula": "271604",
+    "Vadalur": "607303",
+    "Vadgaon-Kasba": "411041",
+    "Vadipatti": "625218",
+    "Vadnagar": "244713",
+    "Vadodara": "390001",
+    "Vaijapur": "423701",
+    "Vaikom": "686141",
+    "Valparai": "642127",
+    "Valsad": "396001",
+    "Vandavasi": "604408",
+    "Vaniyambadi": "635751",
+    "Vapi": "396191",
+    "Varanasi": "221001",
+    "Varkala": "695141",
+    "Vasai-Virar": "401208",
+    "Vatakara": "673021",
+    "Vedaranyam": "614806",
+    "Vellore": "632001",
+    "Venkatagiri": "524132",
+    "Veraval": "362266",
+    "Vidisha": "464001",
+    "Vijapur": "382870",
+    "Vijayapura": "562135",
+    "Vijayawada": "520010",
+    "Vijaypur": "473111",
+    "Vikarabad": "501101",
+    "Vikramasingapuram": "627425",
+    "Viluppuram": "605602",
+    "Vinukonda": "522647",
+    "Viramgam": "382150",
+    "Virudhachalam": "606025",
+    "Virudhunagar": "626001",
+    "Visakhapatnam": "530016",
+    "Visnagar": "384315",
+    "Viswanatham": "626189",
+    "Vizianagaram": "535001",
+    "Vrindavan": "281121",
+    "Vyara": "394650",
+    "Wadgaon-Road": "445001",
+    "Wadhwan": "363001",
+    "Wadi": "400601",
+    "Wai": "412803",
+    "Wanaparthy": "509103",
+    "Wara-Seoni": "483501",
+    "Warangal": "506006",
+    "Wardha": "442001",
+    "Warisaliganj": "805130",
+    "Warora": "442907",
+    "Washim": "444505",
+    "Wokha": "797111",
+    "Yadgir": "600006",
+    "Yamunanagar": "135001",
+    "Yanam": "533464",
+    "Yavatmal": "229306",
+    "Yawal": "425301",
+    "Yellandu": "507002",
+    "Yemmiganur": "518360",
+    "Yerraguntla": "516309",
+    "Yevla": "422001",
+    "Zaidpur": "225414",
+    "Zamania": "232329",
+    "Zira": "142047",
+    "Zirakpur": "140603",
+    "Zunheboto": "798620"
+};

@@ -1,7 +1,7 @@
 /*
  * User Schema
- * @path models/userSchema.js
- * @file userSchema.js
+ * @path model/employee/EmployeeSchema.js
+ * @file EmployeeSchema.js
  */
 'use strict';
 
@@ -9,56 +9,50 @@
  * Module dependencies
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    uuid = require("uuid"),
-    bcrypt = require('bcrypt-nodejs'),
-    // bcrypt = require('bcryptjs'),
-    crypto = require('crypto'),
-    jwt = require('jwt-simple'),
-    passportLocalMongoose = require('passport-local-mongoose'),
-    Base = require('./base'), // Include the base schema
-    config = require('../config/');
+    Schema = mongoose.Schema;
 
 var ObjectId = Schema.Types.ObjectId;
 
 /**
  * @description Defining ENUMs for the gender field which will use for validation.
  */
-var genders = 'MALE,FEMALE'.split(',');
-
-/**
- * @description Defining ENUMs for the roles type field which will use for validation.
- */
-var roles = 'ADMINISTRATOR,HUMAN RESOURCE,BUSINESS,FINANCE,MENTOR,REVIEWER'.split(',');
+var genders = ',MALE,FEMALE'.split(',');
 
 /**
  * @description Defining ENUMs for the engineer type field which will use for validation.
  */
-var engineerTypes = 'FELLOWSHIP,INTERNSHIP,EMPLOYEMENT'.split(',');
+var employeeTypes = ',CONTRACT,FELLOWSHIP,PROBATION,EMPLOYMENT,TERMINATED,EX-EMPLOYEE'.split(','); // Will remain as it no change - 14th April 2017 -- Part of new implementation - 11th April 2017 Desc: FELLOWsHIP,CONTRACT,(PROBATION - Company),(EMPLOYMENT - company),(X-EMPLOYMENT- both company & bridgeLabz),CONSULTANT
 
 /**
- * @schema  UserSchema
- * @description User details
+ * @schema EmployeeSchema
+ * @description Employee details
  */
-//var UserSchema = new Base.BaseSchema({
-var UserSchema = new Schema({
-    username: { type: String, unique: true },
-    engineerID: {
+var EmployeeSchema = new Schema({
+    employeeID: {
         type: String,
-        required: true,
-        trim: true,
-        unique: ['A user with same Engineer ID {VALUE} already exists']
+        unique: true,
+        required: true
     },
-    password: String,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
     firstName: {
         type: String,
         trim: true
     },
+    middleName: { // No earlier existance, New implementation - 11th April 2017
+        type: String,
+        trim: true,
+        required: false
+    },
     lastName: {
         type: String,
         trim: true,
+        required: false
+    },
+    phone: {
+        type: String,
+        required: false
+    },
+    altPhone: {
+        type: String,
         required: false
     },
     emailAddress: {
@@ -66,132 +60,71 @@ var UserSchema = new Schema({
         trim: true,
         lowercase: true,
         unique: ['A user with same Email Address {VALUE} already exists'],
-        required: 'Email address is required',
-        //validate: [validate.email, 'invalid email address']
+        required: 'Email address is required'
     },
-    engineerType: {
+    altEmailAddress: {
+        type: String,
+        trim: true,
+        lowercase: true
+    },
+    employeeType: { // Earlier engineerType, Updated - 11th April 2017
         type: String,
         required: ['Engineer Type is required.'],
+        default: 'EMPLOYEE', // No earlier existance, employee is set to default EMPLOYEE type, New implementation - 11th April 2017
         enum: {
-            values: engineerTypes,
+            values: employeeTypes,
             message: 'Invalid Engineer Type. Please selecet a valid Engineer Type.'
         }
     },
     gender: {
         type: String,
-        required: false,
-        // enum: {
-        //     values: genders,
-        //     message: 'Invalid Gender. Please selecet a valid Gender.'
-        // }
-    },
-    isSuperAdmin: {
-        type: Boolean,
-        trim: true,
-        default: false,
         required: false
     },
-    phone: {
-        type: String,
-        required: false,
-        validate: {
-            validator: function(v) {
-                var re = /^\d{10}$/;
-                return (v == null || v.trim().length < 1) || re.test(v)
-            },
-            message: 'invalid phone number.'
+    meta: { // No earlier existance, employee meta may have details which can be added later. New implementation - 11th April 2017
+        avatarImg: {
+            type: ObjectId,
+            ref: 'images',
+            required: false
         }
-    },
-    avatarImg: {
-        type: ObjectId,
-        ref: 'images',
-        required: false
-    },
-    lastIPAddress: String
+    }
 });
 
-// var options = ({ missingPasswordError: "Wrong password" });
-// UserSchema.plugin(passportLocalMongoose, options);
-// UserSchema.plugin(passportLocalMongoose);
-
 /**
- * JWT `
-            Encode ` the password
- *
- * @return {String} token
- * @api public
- */
-UserSchema.statics.encode = function(data) {
-    return jwt.encode(data, config.tokenSecret);
-};
-
-/**
- * JWT `
-            Decode ` the password
- *
- * @return {String} token
- * @api public
- */
-UserSchema.statics.decode = function(data) {
-    return jwt.decode(data, config.tokenSecret);
-};
-
-/**
- *Create schema methods
- */
-UserSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-
-UserSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-};
-
-// UserSchema.methods.validPassword = function(password) {
-//     return bcrypt.compareSync(password, this.password);
-// };
-
-/**
- * Find `
-            User ` by its email
+ * Find `User` by its email
  *
  * @param {String} email
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.findByEmail = function(email, cb) {
+EmployeeSchema.methods.findByEmail = function(email, cb) {
     return this.findOne({
             emailAddress: email
         })
         .exec(cb);
 }
 
-
 /**
- * Find `
-            User ` by its id
+ * Find `User` by its id
  *
  * @param {String} id
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserById = function(id, callback) {
+EmployeeSchema.methods.getUserById = function(id, callback) {
     User.findById(id, callback);
 };
 
-
 /**
- * Find `
-            User ` by its username
+ * Find `User` by its username
  *
  * @param {String} username
  * @return {Error} err
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserByUsername = function(username, callback) {
+EmployeeSchema.methods.getUserByUsername = function(username, callback) {
     var query = {
         username: username
     };
@@ -199,8 +132,7 @@ UserSchema.methods.getUserByUsername = function(username, callback) {
 };
 
 /**
- * Find `
-            User ` by its username and Password
+ * Find `User` by its username and Password
  *
  * @param {String} username
  * @param {String} password
@@ -208,21 +140,19 @@ UserSchema.methods.getUserByUsername = function(username, callback) {
  * @return {User} user
  * @api public
  */
-UserSchema.methods.getUserByUsernameAndPassword = function(query, callback) {
+EmployeeSchema.methods.getUserByUsernameAndPassword = function(query, callback) {
     this.findOne(query, callback);
 };
 
-
 /**
- * createUser `
-            User ` by newUser Object
+ * createUser `User` by newUser Object
  *
  * @param {Object} newUser
  * @return {Error} err
  * @return Void
  * @api public
  */
-UserSchema.methods.createUser = function(newUser, callback) {
+EmployeeSchema.methods.createUser = function(newUser, callback) {
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
             newUser.password = hash;
@@ -251,7 +181,7 @@ UserSchema.methods.createUser = function(newUser, callback) {
     });
 };
 
-UserSchema.pre('save', function(next) {
+EmployeeSchema.pre('save', function(next) {
     // var user = this;
     // if (!user.isModified('password')) { return next(); }
     // bcrypt.genSalt(10, (err, salt) => {
@@ -271,14 +201,14 @@ UserSchema.pre('save', function(next) {
     next();
 });
 
-//var UserModel = Base.BaseModel.discriminator('User', UserSchema);
-var UserModel = mongoose.model('User', UserSchema);
+//var BaseUserModel = Base.BaseModel.discriminator('BaseUser', BaseUserSchema);
+var Employee = mongoose.model('Employee', EmployeeSchema);
 
 /**
  *User Model Utility functions
  */
-function findUser(req, res, next) {
-    return UserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username',
+function findBaseUser(req, res, next) {
+    return BaseUserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username',
         function(err, user) {
             if (err) {
                 return next(err);
@@ -291,8 +221,8 @@ function findUser(req, res, next) {
     );
 }
 
-function viewAllUsers(req, res, next) {
-    return UserModel.find({},
+function viewAllBaseUsers(req, res, next) {
+    return BaseUserModel.find({},
         function(err, users) {
             if (err) {
                 return next(err);
@@ -305,8 +235,8 @@ function viewAllUsers(req, res, next) {
     );
 }
 
-function updateUser(req, res, next) {
-    return UserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
+function updateBaseUser(req, res, next) {
+    return BaseUserModel.findOne({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
         function(err, user) {
             if (err) {
                 return next(err);
@@ -327,8 +257,8 @@ function updateUser(req, res, next) {
     );
 }
 
-function deleteUser(req, res, next) {
-    return UserModel.findOneAndRemove({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
+function deleteBaseUser(req, res, next) {
+    return BaseUserModel.findOneAndRemove({ 'emailAddress': req.params.emailAddress }, 'emailAddress username password',
         function(err, user) {
             if (err) {
                 return next(err);
@@ -341,14 +271,13 @@ function deleteUser(req, res, next) {
     );
 }
 /**
- * @description Expose `
-            User ` Model
+ * @description Expose `User` Model
  */
+
 module.exports = {
-    User: UserModel, //mongoose.model('User', UserSchema);
-    UserSchema: UserSchema,
-    findUser: findUser,
-    viewAllUsers: viewAllUsers,
-    updateUser: updateUser,
-    deleteUser: deleteUser
+    Employee: Employee,
+    findBaseUser: findBaseUser,
+    viewAllBaseUsers: viewAllBaseUsers,
+    updateBaseUser: updateBaseUser,
+    deleteBaseUser: deleteBaseUser
 };

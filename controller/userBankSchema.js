@@ -9,6 +9,7 @@
  * Module dependencies
  */
 var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
     User = require('./userSchema').User,
     Base = require('./base');  // Include the base schema
 
@@ -18,10 +19,11 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
  * @schema  UserBankDetailsSchema
  * @description User Bank details of user
  */
-var UserBankDetailsSchema = new Base.BaseSchema({
+// var UserBankDetailsSchema = new Base.BaseSchema({
+var UserBankDetailsSchema = Schema({
 	user: {
 		type: ObjectId,
-	    ref: 'User',
+	  ref: 'User',
 		unique: true,
 		required: true
 	},
@@ -52,6 +54,10 @@ var UserBankDetailsSchema = new Base.BaseSchema({
 		trim: true
 	}
 });
+UserBankDetailsSchema.statics.userID = function (userID,callback) {
+  // var self = this;
+    this.find({user:userID},callback);
+};
 
 /**
  * Expose `UserBankDetails` Model

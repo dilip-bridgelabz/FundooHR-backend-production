@@ -5,7 +5,7 @@
 var
     express = require('express'),
     passport = require('../authenticate/auth'),
-    UserUtils = require('../model/userSchema'),
+    UserUtils = require('../model/'),
     jwt = require('jsonwebtoken'),
     isLoggedIn = require('../authenticate/');
 /**

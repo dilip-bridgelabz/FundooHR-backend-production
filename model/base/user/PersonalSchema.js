@@ -1,7 +1,7 @@
 /*
- * User Personal Schema
- * @path models/userPersonalSchema.js
- * @file userPersonalSchema.js
+ * Base User Personal Schema
+ * @path model/base/user/PersonalSchema.js
+ * @file PersonalSchema.js
  */
 'use strict';
 
@@ -9,8 +9,8 @@
  * Module dependencies
  */
 var mongoose = require('mongoose'),
-    User = require('./userSchema').User,
-    Base = require('./base'); // Include the base schema
+    Schema = mongoose.Schema,
+    User = require('./Schema').BaseUser;
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -20,10 +20,10 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var relationType = 'FATHER,MOTHER,SON,DAUGHTER,SPOUSE,GRANDFATHER,GRANDMOTHER,GREAT-GRANDFATHER,GREAT-GRANDMOTHER,AUNT,UNCLE,COUSIN'.split(',')
 
 /**
- * @schema UserPersonalSchema
+ * @schema BaseUserPersonalSchema
  * @description Personal Details of the User
  */
-var UserPersonalSchema = new Base.BaseSchema({
+var BaseUserPersonalSchema = new Schema({
     user: {
         type: ObjectId,
         ref: 'User',
@@ -34,25 +34,26 @@ var UserPersonalSchema = new Base.BaseSchema({
         type: Date,
         trim: true
     },
-    engineerRelative: {
+    employeeRelative: { //engineerRelative
         name: {
             type: String
         },
         relationAs: {
             type: String,
-            enum: relationType
+            enum: relationType,
+            default: 'FATHER'
         },
         contact: {
             type: String,
-            required: true
+            required: false
         },
         occupation: {
             type: String,
-            required: true
+            required: false
         },
-        relativesAnnualSalary: {
-            type: Number,
-            trim: true
+        relativeAnnualSalary: {
+            type: String,
+            trim: false
         }
     },
     address: {
@@ -66,6 +67,6 @@ var UserPersonalSchema = new Base.BaseSchema({
 });
 
 /**
- * Expose `UserPersonal` Model
+ * Expose `BaseUserPersonal` Model
  */
-module.exports = Base.BaseModel.discriminator('UserPersonal', UserPersonalSchema);
+module.exports = mongoose.model('BaseUserPersonal', BaseUserPersonalSchema);

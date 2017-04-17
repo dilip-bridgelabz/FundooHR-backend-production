@@ -8,6 +8,7 @@ var os = require('os').networkInterfaces();
 
 // Iterate over interfaces ...
 var ip = Object.keys(os).reduce(function(result, dev) {
+
     return result.replace("lo", "").concat(os[dev].reduce(function(result, details) {
         return result.concat(details.family === 'IPv4' && !details.internal ? [details.address] : []);
     }, []));
@@ -41,7 +42,6 @@ custEvent.prototype.employeeSnapshot = function(tempObj, engineerId) {
         } else {
             tempObj.employeeData = JSON.parse(employeeData[engineerId]);
             tempObj.employeeData.imageUrl = imageUrl;
-            `  `
             myCustEvent.emit("employeeSnapshot", tempObj);
         }
     });

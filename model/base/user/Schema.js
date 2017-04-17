@@ -18,6 +18,7 @@ var mongoose = require('mongoose'),
 
 var ObjectId = Schema.Types.ObjectId;
 
+
 /**
  * @description Defining ENUMs for the gender field which will use for validation.
  */
@@ -37,8 +38,15 @@ var employeeTypes = ',CONTRACT,FELLOWSHIP,PROBATION,EMPLOYEMENT,TERMINATED'.spli
  * @schema Base User Schema
  * @description User details
  */
+<<<<<<< HEAD:model/base/user/Schema.js
 var BaseUserSchema = new Schema({
     employee: { // Earlier username, Update of new implementation - 11th April 2017
+=======
+//var UserSchema = new Base.BaseSchema({
+var UserSchema = new Schema({
+    employee: { type: String, unique: true },
+    engineerID: {
+>>>>>>> edc71d6e3ee463d8a3cd352ebb26bfa3b9632776:model/userSchema.js
         type: String,
         unique: true
     },
@@ -323,6 +331,7 @@ function deleteBaseUser(req, res, next) {
             User ` Model
  */
 module.exports = {
+<<<<<<< HEAD:model/base/user/Schema.js
     BaseUser: BaseUserModel, //mongoose.model('User', UserSchema);
     BaseUserSchema: BaseUserSchema,
     findBaseUser: findBaseUser,
@@ -330,3 +339,12 @@ module.exports = {
     updateBaseUser: updateBaseUser,
     deleteBaseUser: deleteBaseUser
 };
+=======
+    User: UserModel, //mongoose.model('User', UserSchema);
+    UserSchema: UserSchema,
+    findUser: findUser,
+    viewAllUsers: viewAllUsers,
+    updateUser: updateUser,
+    deleteUser: deleteUser
+};
+>>>>>>> edc71d6e3ee463d8a3cd352ebb26bfa3b9632776:model/userSchema.js

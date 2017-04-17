@@ -120,7 +120,7 @@ UserSchema.pre("save", true, function(next, done) {
             xcounter = 1;
             if (error) {
                 console.log(error);
-            } else if (results.length == 0) {
+            } else if ( !results || results.length == 0) {
                 xcounter = 1;
             } else {
                 if (results.employeeID) {

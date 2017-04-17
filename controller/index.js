@@ -28,7 +28,6 @@ app.use("/downloadAttendanceReport", require("./downloadAttendanceReport"));
 app.use("/downloadInvoiceReport", require("./downloadInvoiceReport"));
 
 app.post("/dummy", function(req, res) {
-
     var data = {};
     data.engineerId = req.body.engineerId;
     data.company = req.body.company;
@@ -36,7 +35,7 @@ app.post("/dummy", function(req, res) {
     data.city = req.body.city;
     deriveDataEvent.dummy(JSON.stringify(data)).then(function(setData) {
         res.send(setData);
-    })
+    });
 });
 
 

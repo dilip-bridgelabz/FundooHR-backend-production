@@ -1,7 +1,7 @@
 /*
- * Attendance Schema
- * @path models/attendanceSchema.js
- * @file attendanceSchema.js
+ * Base Attendance Schema
+ * @path models/base/user/AttendanceSchema.js
+ * @file AttendanceSchema.js
  */
 'use strict';
 
@@ -9,41 +9,24 @@
  * Module dependencies
  */
 var mongoose = require('mongoose'),
-    User = require('./userSchema').User,
-    Client = require('./clientSchema'),
-    Base = require('./base'); // Include the base schema
+    Schema = mongoose.Schema;
+    // User = require('./Schema').BaseUser;
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-// /**
-//  * @schema  HolidaySchema
-//  * @description Holiday details
-//  */
-// var ClientHolidaySchema = new Base.BaseSchema({
-//     client: {
-//         type: ObjectId,
-//         ref: 'client'
-//     },
-//     date: {
-//         type: Date,
-//         ref: 'User'
-//     },
-//     occasion: {
-//         type: String,
-//         trim: true
-//     }
-// });
-
 /**
- * @schema AttendanceSchema
+ * @schema BaseUserAttendanceSchema
  * @description Attendance details
  */
-var AttendanceSchema = new Base.BaseSchema({
+var BaseUserAttendanceSchema = Schema({
     user: {
         type: ObjectId,
         ref: 'User',
-		unique: true,
-		required: true
+        required: true
+    },
+    attendanceDate: {
+        type: Date,
+        required: true
     },
     inTime: {
         type: Date,
@@ -51,10 +34,6 @@ var AttendanceSchema = new Base.BaseSchema({
     },
     outTime: {
         type: Date,
-        trim: true
-    },
-    isPresent: {
-        type: Boolean,
         trim: true
     },
     reason: {
@@ -67,12 +46,20 @@ var AttendanceSchema = new Base.BaseSchema({
     //     ref: HolidaySchema
     // }
 });
+BaseUserAttendanceSchema.statics.doAttendance = function (attendanceData,callback) {
+  var self =this;
+  var attendanceObj = new self(attendanceData);
+  attendanceObj.save(callback);
+};
+BaseUserAttendanceSchema.statics.isUserMarked = function (attendanceData,callback) {
+  attendanceData.attendanceDate=(new Date(attendanceData.attendanceDate));
+  var self =this;
+  self.findOne({user:attendanceData.user,attendanceDate:attendanceData.attendanceDate},callback);
+};
 
 /**
- * Expose `Attendance` & `Client` Model
+ * Expose `BaseUserAttendance` Model
  */
 module.exports = {
-    AttendanceModel: mongoose.model('Attendance', AttendanceSchema)
-    //,
-    //ClientHolidayModel: mongoose.model('Holiday', ClientHolidaySchema)
+    BaseUserAttendance: mongoose.model('BaseUserAttendance', BaseUserAttendanceSchema)
 };

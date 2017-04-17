@@ -89,6 +89,18 @@ var validationSchema = {
                 errorMessage: 'Date field is require & cannot be blank.'
             }
         }
+    },
+    "attendance": {
+        "user": { in: "body",
+            notEmpty: {
+                errorMessage: 'User field is require & cannot be blank.'
+            }
+        },
+        "attendanceDate": { in: "body",
+            notEmpty: {
+                errorMessage: 'Attendance Date field is require & cannot be blank.'
+            }
+        }
     }
 };
 /**

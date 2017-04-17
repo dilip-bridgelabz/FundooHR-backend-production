@@ -66,7 +66,7 @@ router.route('/signup')
 // ---------------------------------------------------------
 router.use(function(req, res, next) {
     // check header or url parameters or post parameters for token
-    var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+    var token = req.body.token || req.params['token'] || req.headers['x-access-token'];
     // decode token
     if (token) {
         // verifies secret and checks exp
@@ -102,6 +102,8 @@ router.get('/dashboard', function(req, res, next) {
         linkStatus: linkStatus
     });
 });
+router.post('/doAttendance', require("./api/doAttendance"));
+
 
 
 router.get('/logout', function(req, res) {

@@ -1,16 +1,13 @@
 var Express = require('express');
 var router = Express.Router();
-var commonMethod = require("../common/commonMethod");
-var deriveDataEvent = require("../common/events");
 var config = require('../config/static');
 var models = require("../model");
 
-var count = 0;
 router.get("/:requiredData", function(request, response) {
     var result1 = {},
         errors;
     try {
-      result1 = undefined;
+        result1 = undefined;
         result1 = config.defaultResult; //Setting Default Result as false
         console.log(JSON.stringify(config.defaultResult));
         var employeeArea = request.params.requiredData;
@@ -18,7 +15,6 @@ router.get("/:requiredData", function(request, response) {
             throw "Bad Parameter Conntact to administrator"; //Generating Error While not Finding param in array
             return;
         } else {
-            console.log(count);
 
             // if (typeof config.validationSchema.employeeData != undefined) {
             request.check(config.validationSchema.employeeData);
@@ -52,7 +48,6 @@ router.get("/:requiredData", function(request, response) {
             });
         }
     } catch (e) {
-        console.log(e);
         if (!config.checkSystemErrors(e)) {
             result1.status = false;
             result1.message = e;

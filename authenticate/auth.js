@@ -49,7 +49,7 @@ passport.use('local-signup', new LocalStrategy({
     function(request, username, password, done) {
         process.nextTick(function() {
             if (!request.user) {
-                User.findOne({'employee': username }, function(err, user) {
+                User.findOne({ 'username': username }, function(err, user) {
                     if (err) {
                         console.error(err);
                         return done(err);
@@ -58,16 +58,9 @@ passport.use('local-signup', new LocalStrategy({
                         return done(null, false, { message: 'Username/EmailAddress already exists' });
                     } else {
                         var newUser = new User();
-                        newUser.employee = request.body.username;
+                        newUser.username = request.body.username;
                         newUser.password = newUser.generateHash(password);
                         newUser.emailAddress = request.body.username;
-                        newUser.firstName = request.body.firstName || '';
-                        newUser.lastName = request.body.lastName || '';
-                        newUser.gender = (request.body.gender) ? request.body.gender.toUpperCase() : '';
-                        newUser.phone = request.body.phone || '';
-                        newUser.engineerID = request.body.engineerID || '';
-                        newUser.engineerType = ((request.body.engineerType) ? request.body.engineerType.toUpperCase() : '') || '';
-                        console.log(newUser);
                         newUser.save(function(error) {
                             if (error) {
                                 var message;
@@ -104,7 +97,7 @@ passport.use('local-login', new LocalStrategy({
         badRequestMessage: 'Username, Password is blank. No Username & Password sent.'
     },
     function(req, username, password, done) {
-        User.findOne({'employee': username }, function(err, user) {
+        User.findOne({ 'username': username }, function(err, user) {
             if (err) {
                 console.log(err.message == "Missing credentials");
                 return done(err);

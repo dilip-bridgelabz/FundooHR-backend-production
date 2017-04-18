@@ -102,7 +102,54 @@ UserSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
+
+String.prototype.lpad = function(padString, length) {
+    var str = this;
+    while (str.length < length)
+        str = padString + str;
+    return str;
+}
+
+UserSchema.pre("save", true, function(next, done) {
+    var self = this;
+    var currentDate = new Date;
+    if (this.isNew) {
+        console.log('Pre-save User Signup hook...');
+        var query = User.findOne({ employeeID: { $exists: true } }).sort({ $natural: -1 }).limit(1);
+        query.exec(function(error, results) {
+            xcounter = 1;
+            if (error) {
+                console.log(error);
+            } else if (results.length == 0) {
+                xcounter = 1;
+            } else {
+                if (results.employeeID) {
+                    var xcounter = results.employeeID.match(/.{1,8}/g);
+                    if (typeof xcounter[1] === undefined) {
+                        xcounter = 1;
+                    } else {
+                        xcounter = parseInt(xcounter[1] || 0) + 1;
+                    }
+                }
+            }
+            var d = new Date();
+            xcounter = xcounter + '';
+            while (xcounter.length < 3)
+                xcounter = "0" + xcounter;
+            self.employeeID = (d.getDate() < 10 ? '0' : '') + d.getDate() + '' + (d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1) + d.getFullYear() + xcounter.lpad("0", 3);
+            next();
+        });
+        this.createdAt = currentDate.now;
+        this.employeeID = self.employeeID;
+        this.updatedAt = currentDate.now;
+        console.log(this);
+        done();
+    }
+});
+
+var User = mongoose.model('User', UserSchema);
+
 module.exports = {
-    User: mongoose.model('User', UserSchema),
+    User: User,
     UserSchema: UserSchema
 };

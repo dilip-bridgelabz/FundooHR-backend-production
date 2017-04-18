@@ -36,8 +36,8 @@
             "description": "API for Client (Tech Company)"
         },
         {
-	     "name" : "Search",
-	     "description" : "API for searching the employee."
+            "name": "Search",
+            "description": "API for searching the employee."
         }
     ],
     "schemes": [
@@ -197,8 +197,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "snapshotType",
                         "snapshotType": "Snapshot Type",
                         "in": "query",
@@ -249,8 +248,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "fromDate",
                         "fromDate": "From Date",
                         "in": "query",
@@ -300,8 +298,7 @@
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "notificationType",
                         "notificationType": "Notification Type",
                         "in": "query",
@@ -353,8 +350,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "employeeID",
                         "in": "query",
                         "description": "Employee ID is unique for each employee",
@@ -404,8 +400,7 @@
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "Scehma",
                         "in": "body",
                         "description": "JSON format for sending the employee details & attendance details.",
@@ -448,8 +443,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "dataType",
                         "notificationType": "Data Type",
                         "in": "query",
@@ -501,8 +495,7 @@
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "employeeData",
                         "in": "body",
                         "description": "JSON format of the HR Data of an employee",
@@ -612,8 +605,7 @@
                 "produces": [
                     "application/octet-stream"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "ReportType",
                         "ReportType": "Report Type",
                         "in": "query",
@@ -666,8 +658,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                {
+                "parameters": [{
                     "name": "x-access-token",
                     "in": "header",
                     "description": "Token needs to validate & authenticate",
@@ -700,22 +691,22 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                {
-                    "name": "x-access-token",
-                    "in": "header",
-                    "description": "Token needs to validate & authenticate",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "name": "query",
-                    "query": "Query",
-                    "in": "query",
-                    "description": "Query is the parameter passed to the Socket to enable connection start getting the result.",
-                    "required": true,
-                    "type": "string"
-                }],
+                "parameters": [{
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Token needs to validate & authenticate",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "query": "Query",
+                        "in": "query",
+                        "description": "Query is the parameter passed to the Socket to enable connection start getting the result.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success in getting socket search result",
@@ -742,29 +733,29 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                  {
-                      "name": "searchKey",
-                      "in": "path",
-                      "description": "Search key will match to matches the Alphabets 'A', 'B', 'C' or employee name, city & company",
-                      "required": true,
-                      "type": "string"
-                  },
-                  {
-                      "name": "cursor",
-                      "in": "path",
-                      "description": "Cursor is the position for the redis. Initially it will be 0.",
-                      "default":0,
-                      "required": true,
-                      "type": "string"
-                  },
-                  {
-                      "name": "x-access-token",
-                      "in": "header",
-                      "description": "Token needs to validate & authenticate",
-                      "required": true,
-                      "type": "string"
-                 }],
+                "parameters": [{
+                        "name": "searchKey",
+                        "in": "path",
+                        "description": "Search key will match to matches the Alphabets 'A', 'B', 'C' or employee name, city & company",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "path",
+                        "description": "Cursor is the position for the redis. Initially it will be 0.",
+                        "default": 0,
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "Token needs to validate & authenticate",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "response",
@@ -791,8 +782,7 @@
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "clientID",
                         "clientID": "Client ID",
                         "in": "query",
@@ -807,7 +797,8 @@
                         "description": "Token needs to validate & authenticate",
                         "required": true,
                         "type": "string"
-                }],
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success in updating Employee Profile Details",
@@ -834,8 +825,7 @@
                 "produces": [
                     "application/x-www-form-urlencoded"
                 ],
-                "parameters": [
-                    {
+                "parameters": [{
                         "name": "clientID",
                         "clientID": "Client ID",
                         "in": "query",
@@ -859,7 +849,8 @@
                         "description": "Token needs to validate & authenticate",
                         "required": true,
                         "type": "string"
-                }],
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success in getting the client holiday list for a year",
@@ -975,33 +966,33 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "employeeName": "Shwetali",
-                            "employeeStatus": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000022",
-                            "emailId": "khambeshwetali@ymail.com",
-                            "blStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeId": "40002EI"
-                        },
-                        {
-                            "employeeName": "Bhushan",
-                            "employeeStatus": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000021",
-                            "emailId": "me.bhushan4u@gmail.com",
-                            "blStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeId": "40003EI"
-                        }]
+                        "example": [{
+                                "name": "Shwetali",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9876000022",
+                                "emailAddress": "khambeshwetali@ymail.com",
+                                "companyStartDate": "1477308028",
+                                "clientJoinDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeId": "40002EI"
+                            },
+                            {
+                                "name": "Bhushan",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9876000021",
+                                "emailAddress": "bhushan@ymail.com",
+                                "companyStartDate": "1477308028",
+                                "clientJoinDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeId": "40003EI"
+                            }
+                        ]
                     }
                 },
                 "timeStamp": {
@@ -1028,31 +1019,32 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                            "employeeName": "Shwetali",
-                            "employeeStatus": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000022",
-                            "emailId": "khambeshwetali@ymail.com",
-                            "blStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeId": "40002EI"
-                        },
-                        {
-                            "employeeName": "Bhushan",
-                            "employeeStatus": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000021",
-                            "emailId": "me.bhushan4u@gmail.com",
-                            "blStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeId": "40003EI"
-                        }]
+                                "name": "Shwetali",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9876000022",
+                                "emailAddress": "khambeshwetali@ymail.com",
+                                "companyStartDate": "1477308028",
+                                "clientJoinDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeId": "40002EI"
+                            },
+                            {
+                                "name": "Bhushan",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9876000021",
+                                "emailAddress": "bhushan@ymail.com",
+                                "companyStartDate": "1477308028",
+                                "clientJoinDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeId": "40003EI"
+                            }
+                        ]
                     }
                 },
                 "timeStamp": {
@@ -1088,8 +1080,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
+                        "example": [{
                             "unmarkedNumber": {
                                 "required": true,
                                 "type": "integer",
@@ -1101,31 +1092,32 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "employeeID": "40002EI",
-                                "status": "Fellowship",
-                                "name": "Shwetali",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000022",
-                                "emailAddress": "khambeshwetali@ymail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            },
-                            {
-                                "employeeID": "40003EI",
-                                "status": "Fellowship",
-                                "name": "Bhushan",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000021",
-                                "emailAddress": "me.bhushan4u@gmail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            }]
+                                    "name": "Shwetali",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000022",
+                                    "emailAddress": "khambeshwetali@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40002EI"
+                                },
+                                {
+                                    "name": "Bhushan",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000021",
+                                    "emailAddress": "bhushan@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40003EI"
+                                }
+                            ]
                         }]
                     }
                 },
@@ -1133,8 +1125,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
+                        "example": [{
                             "falloutNumber": {
                                 "required": true,
                                 "type": "integer",
@@ -1146,31 +1137,32 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "employeeID": "40002EI",
-                                "status": "Fellowship",
-                                "name": "Shwetali",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000022",
-                                "emailAddress": "khambeshwetali@ymail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            },
-                            {
-                                "employeeID": "40003EI",
-                                "status": "Fellowship",
-                                "name": "Bhushan",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000021",
-                                "emailAddress": "me.bhushan4u@gmail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            }]
+                                    "name": "Shwetali",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000022",
+                                    "emailAddress": "khambeshwetali@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40002EI"
+                                },
+                                {
+                                    "name": "Bhushan",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000021",
+                                    "emailAddress": "bhushan@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40003EI"
+                                }
+                            ]
                         }]
                     }
                 },
@@ -1178,8 +1170,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
+                        "example": [{
                             "employeeLeave": {
                                 "required": true,
                                 "type": "integer",
@@ -1191,31 +1182,32 @@
                                 "example": 36
                             },
                             "employeeList": [{
-                                "employeeID": "40002EI",
-                                "status": "Fellowship",
-                                "name": "Shwetali",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000022",
-                                "emailAddress": "khambeshwetali@ymail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            },
-                            {
-                                "employeeID": "40003EI",
-                                "status": "Fellowship",
-                                "name": "Bhushan",
-                                "company": "BridgeLabz",
-                                "mobile": "9876000021",
-                                "emailAddress": "me.bhushan4u@gmail.com",
-                                "BLStartDate": "1477308028",
-                                "companyJoinDate": "1477308028",
-                                "companyLeaveDate": "1477308028",
-                                "leaveTaken": 0,
-                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                            }]
+                                    "name": "Shwetali",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000022",
+                                    "emailAddress": "khambeshwetali@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40002EI"
+                                },
+                                {
+                                    "name": "Bhushan",
+                                    "type": "Fellowship",
+                                    "company": "BridgeLabz",
+                                    "phone": "9876000021",
+                                    "emailAddress": "bhushan@ymail.com",
+                                    "companyStartDate": "1477308028",
+                                    "clientJoinDate": "1477308028",
+                                    "companyEndDate": "1477308028",
+                                    "leaveTaken": 0,
+                                    "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                    "employeeId": "40003EI"
+                                }
+                            ]
                         }]
                     }
                 }
@@ -1251,15 +1243,15 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "date": "02/03/2017",
-                            "unmarked": "-"
-                        },
-                        {
-                            "date": "02/03/2017",
-                            "unmarked": "5"
-                        }]
+                        "example": [{
+                                "date": "02/03/2017",
+                                "unmarked": "-"
+                            },
+                            {
+                                "date": "02/03/2017",
+                                "unmarked": "5"
+                            }
+                        ]
                     }
                 },
                 "totalEmployee": {
@@ -1371,137 +1363,137 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Bhushan",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000021",
-                            "emailAddress": "me.bhushan4u@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40003EI"
-                        }]
+                        "example": [{
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Bhushan",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9876000021",
+                                "emailAddress": "me.bhushan4u@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                s "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40003EI"
+                            }
+                        ]
                     }
                 }
             }
@@ -1536,93 +1528,93 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI"
-                        }]
+                        "example": [{
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI"
+                            }
+                        ]
                     }
                 },
                 "employeeResultByCity": {
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "city": "Mumbai"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "city": "Mumbai"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "city": "Mumbai"
-                        }]
+                        "example": [{
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "city": "Mumbai"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "city": "Mumbai"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "city": "Mumbai"
+                            }
+                        ]
                     }
                 },
                 "employeeResultByCompany": {
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "company": "Meru"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "company": "Meru"
-                        },
-                        {
-                            "name": "Amit Sharma",
-                            "company": "BridgeLabz",
-                            "emailAddress": "xyz@gmail.com",
-                            "employeeID": "40001EI",
-                            "company": "Meru"
-                        }]
+                        "example": [{
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "company": "Meru"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "company": "Meru"
+                            },
+                            {
+                                "name": "Amit Sharma",
+                                "company": "BridgeLabz",
+                                "emailAddress": "xyz@gmail.com",
+                                "employeeID": "40001EI",
+                                "company": "Meru"
+                            }
+                        ]
                     }
                 }
             }
@@ -1658,31 +1650,32 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40001EI"
-                        },
-                        {
-                            "name": "Bhushan",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000021",
-                            "emailAddress": "me.bhushan4u@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg",
-                            "employeeID": "40003EI"
-                        }]
+                                "name": "Amit Sharma",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40001EI"
+                            },
+                            {
+                                "name": "Bhushan",
+                                "type": "Fellowship",
+                                "company": "BridgeLabz",
+                                "phone": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "companyStartDate": "1477308028",
+                                "clientStartDate": "1477308028",
+                                "companyEndDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg",
+                                "employeeID": "40003EI"
+                            }
+                        ]
                     }
                 }
             }
@@ -1789,36 +1782,36 @@
                     "required": true,
                     "type": "object",
                     "example": [{
-                            "attendanceDate":"2017/04/1",
-                            "isPresent": true,
-                            "intime": "8:30 AM",
-                            "outtime": "2:30 PM",
-                            "reason": "Leave early."
-                        },{
-                          "attendanceDate":"2017/04/2",
-                          "isPresent": true,
-                            "intime": "-",
-                            "outtime": "-",
-                            "reason": "My Wish"
-                        }],
+                        "attendanceDate": "2017/04/1",
+                        "isPresent": true,
+                        "intime": "8:30 AM",
+                        "outtime": "2:30 PM",
+                        "reason": "Leave early."
+                    }, {
+                        "attendanceDate": "2017/04/2",
+                        "isPresent": true,
+                        "intime": "-",
+                        "outtime": "-",
+                        "reason": "My Wish"
+                    }],
+                },
                 "employeeData": {
                     "required": true,
                     "type": "object",
                     "example": {
                         "name": "Amit Sharma",
-                        "status": "Fellowship",
+                        "type": "Fellowship",
                         "company": "BridgeLabz",
-                        "mobile": "9594368083",
+                        "phone": "9594368083",
                         "emailAddress": "xyz@gmail.com",
-                        "BLStartDate": "1477308028",
-                        "companyJoinDate": "1477308028",
-                        "companyLeaveDate": "1477308028",
+                        "companyStartDate": "1477308028",
+                        "clientStartDate": "1477308028",
+                        "companyEndDate": "1477308028",
                         "leaveTaken": 7,
                         "imageUrl": "http://192.168.1.102:3000/image2.jpg"
                     }
                 }
             }
-          }
         },
         "employeeMonthAttendanceFailure": {
             "properties": {
@@ -1850,28 +1843,25 @@
                     "required": true,
                     "type": "object",
                     "example": {
+                        "employeeID": "01122015004",
                         "name": "Amit Sharma",
-                        "status": "Fellowship",
-                        "company": "BridgeLabz",
+                        "type": "Fellowship",
                         "mobile": "9876000022",
+                        "altPhone": "9800087540",
                         "emailAddress": "khambeshwetali@ymail.com",
-                        "BLStartDate": "1477308028",
-                        "companyJoinDate": "1477308028",
-                        "companyLeaveDate": "1477308028",
-                        "leaveTaken": 0,
-                        "imageUrl": "http://192.168.1.102:3000/image2.jpg"
+                        "gender": "Male"
                     }
                 },
                 "hrData": {
                     "required": true,
                     "type": "object",
                     "example": {
-                        "BLStartDate": "1477308028",
+                        "companyStartDate": "1477308028",
                         "companyContractInitiated": "Yes",
                         "companyContractSigned": "No",
                         "company": "BridgeLabz",
-                        "companyJoinDate": "1477308028",
-                        "companyLeaveDate": "1477308028",
+                        "clientStartDate": "1477308028",
+                        "companyEndDate": "1477308028",
                         "contractSignDate": "..",
                         "employeeStatus": "Fellowship",
                         "enggContractInitiated": "Yes",
@@ -1879,19 +1869,44 @@
                         "fellowshipPeriod": "3 Months",
                         "hiringCity": "Mumbai",
                         "initiateTransfer": "Yes"
+                        "employeeID": "01122015004",
+                        "currentProgramAssignment": "BRIDGELABZ",
+                        "programCurrentStatus": "Completes - 16 of 14 weeks",
+                        "programLag": "2 Weeks",
+                        "fellowshipTechAssignment": "Java",
+                        "currentContractAssignment": "Meru",
+                        "contractBookingFee": "30000",
+                        "contractMonthlyFee": "0",
+                        "contractTransferFee": "35000",
+                        "contractCity": "Mumbai",
+                        "plannedStartDate": "NA",
+                        "contractStatus": "In-Progress",
+                        "employeeTracking": [{
+                            "employeeType": "Contract",
+                            "initiateOn": "",
+                            "signedOn": "",
+                            "assignment": "Java",
+                            "client": "Meru",
+                            "contractMonthlyFee": "0",
+                            "contractTransferFee": "35000",
+                            "contractCity": "Mumbai",
+                            "estStartDate": "NA",
+                            "startDate": "1477308028",
+                            "endDate": "1477308028"
+                        }]
                     }
                 },
                 "personalData": {
                     "required": true,
                     "type": "object",
                     "example": {
-                        "annualSalary": "200000000000",
-                        "dateOfBirth": "20 Sep 1993",
-                        "emailId": "khambeshwetali@ymail.com",
-                        "employeeName": "Shwetali",
-                        "fatherMobile": "9768525131",
-                        "fatherName": "KK ganguli",
-                        "mobile": "9876000022",
+                        "relativesAnnualSalary": "200000000000",
+                        "dob": "20 Sep 1993",
+                        "emailAddress": "khambeshwetali@ymail.com",
+                        "name": "Shwetali",
+                        "relativeContact": "9768525131",
+                        "relativeName": "KK ganguli",
+                        "phone": "9876000022",
                         "mumbaiAddress": "Flat No.201,Raheja Complex , Andheri (W)",
                         "occupation": "Engineer",
                         "permenantAddress": "Flat No.201, Raheja Complex , Andheri (W)"
@@ -1916,24 +1931,47 @@
                     "required": true,
                     "type": "object",
                     "example": {
-                        "bridgelabzStartDate": "2nd Jan 2017",
-                        "bridgelabzEndDate": "2nd April 2017",
+
+                        "companyStartDate": "2nd Jan 2017",
+                        "companyEndDate": "2nd April 2017",
                         "currentWeek": "4 week",
                         "weeksLeft": "19 week",
-                        "techStack": "Android",
+                        "techAssignment": "Android",
                         "week1": "7 week"
+                        "employeeID": "01122015004",
+                        "programAssessment": [{
+                            "weeklyTasksAssessment": [{
+                                "title": "Communication",
+                                "description": "Seminars to impove communication skills.",
+                                "phase": "",
+                                "subphase": "",
+                                "weekNumber": 2,
+                                "reviewer": "3005E",
+                                "completionDate": "1477308028",
+                                "actualCompletionDate": "1477308028",
+                                "rating": {},
+                                "feedback": ""
+                            }],
+                            "overallRating": {},
+                            "assessedBy": {},
+                            "assessedOn": "1477308028"
+                        }]
                     }
                 },
                 "bankData": {
                     "required": true,
                     "type": "object",
                     "example": {
-                        "accountNumber": "06001251551000",
-                        "bankName": "SBI",
-                        "ifscCode": "SBI002121",
+
+                        "employeeID": "01122015004",
+                        "accountNumber": "985642379164589",
+                        "ifscCode": "AFTH7896P",
                         "pan": "APZT54551ds",
-                        "isSalaried": "Yes",
-                        "reason": "NA"
+                        "payStipend": "Yes",
+                        "ammount": 10000,
+                        "bankName": "Bank of Maharashtra",
+                        "reason": "",
+                        "bankVerified": true
                     }
                 }
             }
@@ -2018,14 +2056,13 @@
                 "employeeID": {
                     "type": "string",
                     "required": true,
-                    "example": "40001EI"
+                    "example": "01122015004"
                 },
                 "HRDetails": {
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                            {
+                        "example": [{
                             "hiringCity": {
                                 "type": "string",
                                 "required": true,
@@ -2098,8 +2135,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                            {
+                        "example": [{
                             "name": {
                                 "type": "string",
                                 "required": true,
@@ -2162,8 +2198,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                            {
+                        "example": [{
                             "diploma": {
                                 "type": "string",
                                 "required": true,
@@ -2216,8 +2251,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                            {
+                        "example": [{
                             "techStack": {
                                 "type": "string",
                                 "required": true,
@@ -2255,8 +2289,7 @@
                     "required": true,
                     "schema": {
                         "type": "array",
-                        "example": [
-                            {
+                        "example": [{
                             "accountNumber": {
                                 "type": "string",
                                 "required": true,
@@ -2378,43 +2411,44 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                            "company": "MERU",
-                            "employeeList": {
-                                "required": true,
-                                "schema": {
-                                    "type": "array",
-                                    "example": [{
-                                            "name": "AratiPatel",
-                                            "leaves": 0
-                                        },
-                                        {
-                                            "name": "Arjun Thakur",
-                                            "leaves": 1
-                                        }
-                                    ]
+                                "company": "MERU",
+                                "employeeList": {
+                                    "required": true,
+                                    "schema": {
+                                        "type": "array",
+                                        "example": [{
+                                                "name": "AratiPatel",
+                                                "leaves": 0
+                                            },
+                                            {
+                                                "name": "Arjun Thakur",
+                                                "leaves": 1
+                                            }
+                                        ]
 
+                                    }
+                                }
+                            },
+                            {
+                                "company": "NEXT-EDUCATION",
+                                "employeeList": {
+                                    "required": true,
+                                    "schema": {
+                                        "type": "array",
+                                        "example": [{
+                                                "name": "Sohail Khan",
+                                                "leaves": 0
+                                            },
+                                            {
+                                                "name": "Arbaz Khan",
+                                                "leaves": 1
+                                            }
+                                        ]
+
+                                    }
                                 }
                             }
-                        },
-                        {
-                            "company": "NEXT-EDUCATION",
-                            "employeeList": {
-                                "required": true,
-                                "schema": {
-                                    "type": "array",
-                                    "example": [{
-                                            "name": "Sohail Khan",
-                                            "leaves": 0
-                                        },
-                                        {
-                                            "name": "Arbaz Khan",
-                                            "leaves": 1
-                                        }
-                                    ]
-
-                                }
-                            }
-                        }]
+                        ]
                     }
                 }
             }
@@ -2445,7 +2479,7 @@
                     "type": "string",
                     "example": "Successfully retrived the client working days"
                 },
-                "weekdays":{
+                "weekdays": {
                     "required": true,
                     "schema": {
                         "type": "array",
@@ -2508,31 +2542,32 @@
                     "schema": {
                         "type": "array",
                         "example": [{
-                            "employeeID": "40001EI",
-                            "name": "Amit Sharma",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9594368083",
-                            "emailAddress": "xyz@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 7,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                        },
-                        {
-                            "employeeID": "40003EI",
-                            "name": "Bhushan",
-                            "status": "Fellowship",
-                            "company": "BridgeLabz",
-                            "mobile": "9876000021",
-                            "emailAddress": "me.bhushan4u@gmail.com",
-                            "BLStartDate": "1477308028",
-                            "companyJoinDate": "1477308028",
-                            "companyLeaveDate": "1477308028",
-                            "leaveTaken": 0,
-                            "imageUrl": "http://192.168.1.102:3000/image2.jpg"
-                        }]
+                                "employeeID": "40001EI",
+                                "name": "Amit Sharma",
+                                "status": "Fellowship",
+                                "company": "BridgeLabz",
+                                "mobile": "9594368083",
+                                "emailAddress": "xyz@gmail.com",
+                                "BLStartDate": "1477308028",
+                                "companyJoinDate": "1477308028",
+                                "companyLeaveDate": "1477308028",
+                                "leaveTaken": 7,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
+                            },
+                            {
+                                "employeeID": "40003EI",
+                                "name": "Bhushan",
+                                "status": "Fellowship",
+                                "company": "BridgeLabz",
+                                "mobile": "9876000021",
+                                "emailAddress": "me.bhushan4u@gmail.com",
+                                "BLStartDate": "1477308028",
+                                "companyJoinDate": "1477308028",
+                                "companyLeaveDate": "1477308028",
+                                "leaveTaken": 0,
+                                "imageUrl": "http://192.168.1.102:3000/image2.jpg"
+                            }
+                        ]
                     }
                 }
             }

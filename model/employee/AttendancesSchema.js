@@ -21,7 +21,6 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 var AttendancesSchema = new Schema({
     employeeID: {
         type: String,
-        unique: true,
         required: true
     },
     attendanceDate: {
@@ -30,7 +29,8 @@ var AttendancesSchema = new Schema({
     },
     isPresent: {
         type: Boolean,
-        trim: true
+        trim: true,
+        required: true
     },
     inTime: {
         type: Date,
@@ -44,8 +44,57 @@ var AttendancesSchema = new Schema({
         type: String,
         trim: true
     }
+},{toJSON:{virtuals: true}});
+AttendancesSchema.set('toJSON', {
+    transform:function (doc,ret,field) {
+      ret.a_id=ret._id;
+      ret.attendanceDate=ret.attendanceDate.toString("YYYY/MM/DD");
+      ret.inTime=timeFormat(ret.inTime);
+      ret.outTime=timeFormat(ret.outTime);
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+    }
 });
 
+function timeFormat(dt) {
+      return (dt.getHours()>11?(dt.getHours()%12):(dt.getHours()))+":"+dt.getMinutes()+" "+(dt.getHours()>11?"pm":"am");
+}
+/***
+*@Method doAttendance
+*@description Statics Method To create Attendance
+***/
+AttendancesSchema.statics.doAttendance = function (attendanceData,callback) {
+  var self =this;
+  var attendanceObj = new self(attendanceData);
+  attendanceObj.save(callback);
+};
+
+/***
+*@Method updateAttendance
+*@description Statics Method To update Attendance
+***/
+AttendancesSchema.statics.updateAttendance = function (attendanceData,callback) {
+  var employeeID = attendanceData.employeeID;
+  delete attendanceData.employeeID;
+  this.findOneAndUpdate({employeeID:employeeID},attendanceData, callback);
+};
+
+/***
+*@Method readAttendance
+*@description Statics Method To read Attendance
+***/
+AttendancesSchema.statics.readAttendance = function (attendanceData,callback) {
+  this.find({employeeID:attendanceData.employeeID,attendanceDate:{$gte:attendanceData.startDate,$lte:attendanceData.endDate}}, callback);
+};
+
+/***
+*@Method isUserMarked
+*@description Statics Method To check User is Marked or not
+***/
+AttendancesSchema.statics.isUserMarked = function (attendanceData,callback) {
+  this.findOne({employeeID:attendanceData.employeeID,attendanceDate:attendanceData.attendanceDate},callback);
+};
 /**
  * Expose `Attendance` Model
  */

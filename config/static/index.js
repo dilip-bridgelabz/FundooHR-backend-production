@@ -70,16 +70,16 @@ var validationSchema = {
         "initiateTransfer": {}
     },
     "employeeData": {
-        "engineerID": { in: 'query',
+        "employeeID": { in: 'query',
             notEmpty: {
-                errorMessage: 'engineerID field is require & cannot be blank.'
+                errorMessage: 'employeeID field is require & cannot be blank.'
             }
         }
     },
     "employeeDataPut": {
-        "engineerID": { in: 'query',
+        "employeeID": { in: 'query',
             notEmpty: {
-                errorMessage: 'engineerID field is require & cannot be blank.'
+                errorMessage: 'employeeID field is require & cannot be blank.'
             }
         }
     },
@@ -91,16 +91,42 @@ var validationSchema = {
         }
     },
     "attendance": {
-        "user": { in: "body",
+        "employeeID": { in: "body",
             notEmpty: {
-                errorMessage: 'User field is require & cannot be blank.'
+                errorMessage: 'employeeID field is require & cannot be blank.'
             }
         },
         "attendanceDate": { in: "body",
             notEmpty: {
-                errorMessage: 'Attendance Date field is require & cannot be blank.'
+                errorMessage: 'attendanceDate field is require & cannot be blank.'
+            },
+            isDate:{
+              errorMessage: 'attendanceDate field Must Be Date.'
+            }
+        },
+        "isPresent":{in: "body",
+            notEmpty: {
+                errorMessage: 'isPresent field is require & cannot be blank.'
+            },
+            isBoolean:{
+              errorMessage: 'isPresent field must have Boolean Value.'
             }
         }
+    },
+    "readAttendance":{
+      "employeeID": { in: "query",
+          notEmpty: {
+              errorMessage: 'employeeID field is require & cannot be blank.'
+          }
+      },
+      "date": { in: "query",
+          notEmpty: {
+              errorMessage: 'date field is require & cannot be blank.'
+          },
+          isDate:{
+            errorMessage: 'date field Must Be Proper Date.'
+          }
+      },
     }
 };
 /**

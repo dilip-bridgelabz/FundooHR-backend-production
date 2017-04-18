@@ -102,8 +102,8 @@ router.get('/dashboard', function(req, res, next) {
         linkStatus: linkStatus
     });
 });
-router.post('/doAttendance', require("./api/doAttendance"));
-
+router.post('/createEmployeeDayAttendance', require("./api/doAttendance"));
+router.get('/readEmployeeMonthAttendance', require("./api/readAttendance"));
 
 
 router.get('/logout', function(req, res) {

@@ -345,7 +345,8 @@
         "/readEmployeeMonthAttendance": {
             "get": {
                 "tags": [
-                    "Attendance"
+                    "Attendance",
+                    "Employee"
                 ],
                 "description": "Shows the month attendance record of an employee.",
                 "operationId": "employeeMonthAttendance",
@@ -364,7 +365,7 @@
                         "name": "date",
                         "date": "Date to extract month",
                         "in": "query",
-                        "description": "Date parameter to get the Month & Year. Format needs to be in dd/mm/yyyy for .e.g. 01/01/2017",
+                        "description": "Date parameter to get the Month & Year. Format needs to be in yyyy/mm/dd for .e.g. 2017/01/01",
                         "required": true,
                         "type": "integer"
                     },
@@ -1705,7 +1706,7 @@
                 "attendanceDate": {
                     "type": "string",
                     "required": true,
-                    "example": "01/04/2017"
+                    "example": "2017/04/01"
                 },
                 "employeeID": {
                     "type": "string",
